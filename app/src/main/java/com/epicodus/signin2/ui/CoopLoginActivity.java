@@ -45,6 +45,7 @@ public class CoopLoginActivity extends AppCompatActivity {
                 editor.commit();
 
                 if (bikeCollective != null) {
+                    //TO DO: make the app not crash when a user types incorrect info
                     if (bikeCollective.getPassword().equals(coopPassword)) {
                         Intent intent = new Intent(CoopLoginActivity.this, MainActivity.class);
                         startActivity(intent);

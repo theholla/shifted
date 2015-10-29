@@ -12,4 +12,9 @@
         <item name="android:padding">10dp</item>
     </style>
 
+    <style name="ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+
 </resources>
