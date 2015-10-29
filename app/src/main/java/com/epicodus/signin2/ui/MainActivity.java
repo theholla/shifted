@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.signin2.R;
@@ -15,7 +16,10 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private BikeCollective mBikeCollective;
     private TextView mWelcomeText;
-    private ImageView mMainImageView;
+    private Button mAdminPanelButton, mPatronSignInButton;
+
+//  TODO: add image! Made app crash.
+//  private ImageView mMainImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +28,22 @@ public class MainActivity extends AppCompatActivity {
 
         mPreferences = getApplicationContext().getSharedPreferences("signinapp", Context.MODE_PRIVATE);
         mWelcomeText = (TextView) findViewById(R.id.welcomeText);
-        mMainImageView = (ImageView) findViewById(R.id.mainImageView);
+        mPatronSignInButton = (Button) findViewById(R.id.patronSignInButton);
+        mAdminPanelButton = (Button) findViewById(R.id.adminPanelButton);
+//        mMainImageView = (ImageView) findViewById(R.id.mainImageView);
 
         if (!isLoggedIn()) {
             Intent intent = new Intent(this, CoopLoginActivity.class);
             startActivity(intent);
         }
+
+        mPatronSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PatronSignInActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private boolean isLoggedIn() {

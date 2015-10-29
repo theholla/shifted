@@ -5,4 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_coop_login">Coop Login</string>
     <string name="title_activity_create_coop_account">Create Coop Account</string>
+    <string name="title_activity_patron_sign_in">Sign In</string>
+    <string name="saferSpaceAgreement">Bike Farm is a cooperative space that is accepting and inclusive of every race, economic class, religion, nationality, sexual orientation, gender identity, age, ability, etc.</string>
 </resources>

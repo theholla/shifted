@@ -18,10 +18,31 @@
         android:layout_height="wrap_content"
         android:text="Bike Farm Sign In App"
         android:id="@+id/welcomeText"
-        android:layout_alignTop="@+id/mainImageView"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp" />
+        android:textSize="30sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patron/Volunter Sign In"
+        android:id="@+id/patronSignInButton"
+        android:layout_above="@+id/mainImageView"
+        android:layout_alignRight="@+id/welcomeText"
+        android:layout_alignEnd="@+id/welcomeText"
+        android:layout_alignLeft="@+id/welcomeText"
+        android:layout_alignStart="@+id/welcomeText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin Panel"
+        android:id="@+id/adminPanelButton"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/mainImageView"
+        android:layout_alignLeft="@+id/patronSignInButton"
+        android:layout_alignStart="@+id/patronSignInButton"
+        android:layout_alignRight="@+id/patronSignInButton"
+        android:layout_alignEnd="@+id/patronSignInButton" />
 
 </RelativeLayout>
-
-<!--did not include couch drawable-->

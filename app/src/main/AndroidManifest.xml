@@ -37,6 +37,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.signin2.ui.CoopLoginActivity" />
         </activity>
+        <activity
+            android:name=".ui.PatronSignInActivity"
+            android:label="@string/title_activity_patron_sign_in" >
+        </activity>
     </application>
 
 </manifest>
