@@ -1,4 +1,4 @@
-package com.epicodus.signin2;
+package com.epicodus.signin2.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.epicodus.signin2.R;
 
 public class MainActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
