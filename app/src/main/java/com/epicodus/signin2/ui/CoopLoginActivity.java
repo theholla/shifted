@@ -23,7 +23,7 @@ public class CoopLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_coop_login);
 
         mMainHeaderTextView = (TextView) findViewById(R.id.mainHeaderTextView);
         mPreferences = getApplicationContext().getSharedPreferences("signinapp", Context.MODE_PRIVATE);

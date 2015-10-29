@@ -1,6 +1,7 @@
 package com.epicodus.signin2.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,28 +26,28 @@ public class MainActivity extends AppCompatActivity {
         mWelcomeText = (TextView) findViewById(R.id.welcomeText);
         mMainImageView = (ImageView) findViewById(R.id.mainImageView);
 
-//        if (!isLoggedIn()) {
-//            Intent intent = new Intent(this, CoopLoginActivity.class);
-//            startActivity(intent);
-//        }
+        if (!isLoggedIn()) {
+            Intent intent = new Intent(this, CoopLoginActivity.class);
+            startActivity(intent);
+        }
     }
 
-//    private boolean isLoggedIn() {
-//        String username = mPreferences.getString("name", null);
-//        if (username == null) {
-//            return false;
-//        } else {
-//            setBikeCollective(username);
-//            return true;
-//        }
-//    }
-//
-//    private void setBikeCollective(String name) {
-//        BikeCollective bikeCollective = BikeCollective.find(name);
-//        if (bikeCollective != null) {
-//            mBikeCollective = bikeCollective;
-//            mWelcomeText.setText(bikeCollective.getName() + "'s Sign In App");
-//        }
-//    }
+    private boolean isLoggedIn() {
+        String username = mPreferences.getString("name", null);
+        if (username == null) {
+            return false;
+        } else {
+            setBikeCollective(username);
+            return true;
+        }
+    }
+
+    private void setBikeCollective(String name) {
+        BikeCollective bikeCollective = BikeCollective.find(name);
+        if (bikeCollective != null) {
+            mBikeCollective = bikeCollective;
+            mWelcomeText.setText(bikeCollective.getName() + "'s Sign In App");
+        }
+    }
 
 }
