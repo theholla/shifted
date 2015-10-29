@@ -21,8 +21,22 @@
             android:name=".ui.CoopLoginActivity"
             android:label="@string/title_activity_coop_login" >
         </activity>
-        <meta-data android:name="AA_DB_NAME" android:value="SignIn.db" />
-        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="SignIn.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+
+        <activity
+            android:name=".ui.CreateCoopAccountActivity"
+            android:label="@string/title_activity_create_coop_account"
+            android:parentActivityName=".ui.CoopLoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.signin2.ui.CoopLoginActivity" />
+        </activity>
     </application>
 
 </manifest>

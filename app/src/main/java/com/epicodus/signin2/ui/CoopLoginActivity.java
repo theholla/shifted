@@ -1,5 +1,6 @@
 package com.epicodus.signin2.ui;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,8 +48,25 @@ public class CoopLoginActivity extends AppCompatActivity {
                     if (bikeCollective.getPassword().equals(coopPassword)) {
                         Intent intent = new Intent(CoopLoginActivity.this, MainActivity.class);
                         startActivity(intent);
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(CoopLoginActivity.this);
+                        builder.setMessage("You're either not registered, or you login information is wrong.")
+                                .setTitle("Oops!")
+                                .setPositiveButton(android.R.string.ok, null);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
+                        //TODO: tell user if registered or not
                     }
                 }
+            }
+        });
+
+        mCoopCreateAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CoopLoginActivity.this, CreateCoopAccountActivity.class);
+                startActivity(intent);
             }
         });
     }
