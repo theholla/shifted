@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean isLoggedIn() {
-        String username = mPreferences.getString("name", null);
-        if (username == null) {
+        String name = mPreferences.getString("name", null);
+        if (name == null) {
             return false;
         } else {
-            setBikeCollective(username);
+            setBikeCollective(name);
             return true;
         }
     }

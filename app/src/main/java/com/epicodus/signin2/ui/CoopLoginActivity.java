@@ -41,7 +41,7 @@ public class CoopLoginActivity extends AppCompatActivity {
                 BikeCollective bikeCollective = BikeCollective.find(coopEmail);
 
                 SharedPreferences.Editor editor = mPreferences.edit();
-                editor.putString("coopEmail", coopEmail);
+                editor.putString("name", bikeCollective.getName());
                 editor.commit();
 
                 if (bikeCollective != null) {
