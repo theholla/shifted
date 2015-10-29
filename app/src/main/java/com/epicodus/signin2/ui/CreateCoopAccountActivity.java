@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
@@ -42,20 +41,16 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
                 String agreement = mAgreement.getText().toString().trim();
 
-                SharedPreferences.Editor editor = mPreferences.edit();
-                editor.putString("username", name);
-                editor.commit();
-
                 BikeCollective newBikeCollective = new BikeCollective(name, email, password, agreement);
                 newBikeCollective.save();
-                Toast.makeText(CreateCoopAccountActivity.this, newBikeCollective.getName() + " " + newBikeCollective.getEmail() + " " + newBikeCollective.getPassword() + " " + newBikeCollective.getAgreement(), Toast.LENGTH_LONG).show();
 
-                //this is accidentally directing back to signInActivity. Saves newBikeCollective.
+                SharedPreferences.Editor editor = mPreferences.edit();
+                editor.putString("name", newBikeCollective.getName());
+                editor.commit();
+
                 Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
     }
-
-
 }
