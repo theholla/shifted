@@ -10,8 +10,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/mainImageView"
         android:contentDescription="bike shop sofa"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="180dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,22 +29,20 @@
         android:layout_height="wrap_content"
         android:text="Patron/Volunter Sign In"
         android:id="@+id/patronSignInButton"
-        android:layout_above="@+id/mainImageView"
-        android:layout_alignRight="@+id/welcomeText"
-        android:layout_alignEnd="@+id/welcomeText"
-        android:layout_alignLeft="@+id/welcomeText"
-        android:layout_alignStart="@+id/welcomeText" />
+        android:layout_above="@+id/adminPanelButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="49dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Admin Panel"
         android:id="@+id/adminPanelButton"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/mainImageView"
-        android:layout_alignLeft="@+id/patronSignInButton"
-        android:layout_alignStart="@+id/patronSignInButton"
+        android:layout_marginBottom="49dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/patronSignInButton"
-        android:layout_alignEnd="@+id/patronSignInButton" />
+        android:layout_alignEnd="@+id/patronSignInButton"
+        android:layout_alignLeft="@+id/patronSignInButton"
+        android:layout_alignStart="@+id/patronSignInButton" />
 
 </RelativeLayout>
