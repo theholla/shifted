@@ -1,12 +1,17 @@
 package com.epicodus.signin2.models;
 
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+
 /**
  * Created by admin on 10/29/15.
  */
 @Table(name="BikeCollective", id="_id")
 
 public class BikeCollective extends Model {
-    @Column (name="name")
+    @Column(name="name")
     private String mName;
     @Column(name="email")
     private String mEmail;
