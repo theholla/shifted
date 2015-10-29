@@ -46,6 +46,9 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
 
                 SharedPreferences.Editor editor = mPreferences.edit();
                 editor.putString("name", newBikeCollective.getName());
+                editor.putString("email", newBikeCollective.getEmail());
+                editor.putString("password", newBikeCollective.getPassword());
+                editor.putString("agreement", newBikeCollective.getAgreement());
                 editor.commit();
 
                 Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
