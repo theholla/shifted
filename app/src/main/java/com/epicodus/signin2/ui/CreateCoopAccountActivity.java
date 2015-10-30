@@ -1,5 +1,6 @@
 package com.epicodus.signin2.ui;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,23 +37,34 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
         mRegisterCoopAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = mName.getText().toString().trim();
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
-                String agreement = mAgreement.getText().toString().trim();
+                String coopName = mName.getText().toString().trim();
+                String coopEmail = mEmail.getText().toString().trim();
+                String coopPassword = mPassword.getText().toString().trim();
+                String coopAgreement = mAgreement.getText().toString().trim();
 
-                BikeCollective newBikeCollective = new BikeCollective(name, email, password, agreement);
-                newBikeCollective.save();
-
+                BikeCollective alreadyRegistered = BikeCollective.find(coopEmail);
                 SharedPreferences.Editor editor = mPreferences.edit();
-                editor.putString("name", newBikeCollective.getName());
-                editor.putString("email", newBikeCollective.getEmail());
-                editor.putString("password", newBikeCollective.getPassword());
-                editor.putString("agreement", newBikeCollective.getAgreement());
-                editor.commit();
 
-                Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
-                startActivity(intent);
+                if (alreadyRegistered == null) {
+                    BikeCollective newBikeCollective = new BikeCollective(coopName, coopEmail, coopPassword, coopAgreement);
+                    newBikeCollective.save();
+
+                    editor.putString("email", newBikeCollective.getEmail());
+                    editor.putString("password", newBikeCollective.getPassword());
+                    editor.putString("name", newBikeCollective.getName());
+                    editor.putString("agreement", newBikeCollective.getAgreement());
+                    editor.commit();
+
+                    Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateCoopAccountActivity.this);
+                    builder.setMessage("This email is already registered.")
+                            .setTitle("Oops!")
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    builder.show();
+                }
             }
         });
     }

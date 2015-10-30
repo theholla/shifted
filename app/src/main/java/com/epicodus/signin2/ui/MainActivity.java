@@ -89,3 +89,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
+/**
+ * TODO: only store bikecollectives in one place, preferences or sql
+ * implement scroll bar in safe space agreement
+ * allow maneuvering with keyboard
+ * top bar nav
+ * make BikeCollective table in SQL plural
+ **/

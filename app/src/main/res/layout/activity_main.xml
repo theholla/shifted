@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bike Farm Sign In App"
+        android:text="Coop Sign In Default Text"
         android:id="@+id/welcomeText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
