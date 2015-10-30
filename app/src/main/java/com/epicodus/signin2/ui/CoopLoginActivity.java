@@ -26,10 +26,12 @@ public class CoopLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coop_login);
 
-        mMainHeaderTextView = (TextView) findViewById(R.id.mainHeaderTextView);
         mPreferences = getApplicationContext().getSharedPreferences("signinapp", Context.MODE_PRIVATE);
+
         mCoopEmail = (EditText) findViewById(R.id.coopEmailEditText);
         mCoopPassword = (EditText) findViewById(R.id.coopPasswordEditText);
+
+        mMainHeaderTextView = (TextView) findViewById(R.id.mainHeaderTextView);
         mCoopSignInButton = (Button) findViewById(R.id.coopSignInButton);
         mCoopCreateAccountButton = (Button) findViewById(R.id.coopCreateAccountButton);
 
@@ -38,27 +40,33 @@ public class CoopLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String coopEmail = mCoopEmail.getText().toString().trim();
                 String coopPassword = mCoopPassword.getText().toString().trim();
+
                 BikeCollective bikeCollective = BikeCollective.find(coopEmail);
 
                 SharedPreferences.Editor editor = mPreferences.edit();
-                editor.putString("name", bikeCollective.getName());
-                editor.commit();
 
                 if (bikeCollective != null) {
-                    //TO DO: make the app not crash when a user types incorrect info
                     if (bikeCollective.getPassword().equals(coopPassword)) {
+                        editor.putString("name", bikeCollective.getName());
+                        editor.commit();
                         Intent intent = new Intent(CoopLoginActivity.this, MainActivity.class);
                         startActivity(intent);
+                        int i = 1;
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(CoopLoginActivity.this);
-                        builder.setMessage("You're either not registered, or you login information is wrong.")
-                                .setTitle("Oops!")
-                                .setPositiveButton(android.R.string.ok, null);
+                        builder.setMessage("Your email and password don't match.")
+                            .setTitle("Oops!")
+                            .setPositiveButton(android.R.string.ok, null);
                         AlertDialog dialog = builder.create();
                         dialog.show();
-
-                        //TODO: tell user if registered or not
                     }
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CoopLoginActivity.this);
+                    builder.setMessage("You don't appear to be registered.")
+                            .setTitle("Oops!")
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
             }
         });
