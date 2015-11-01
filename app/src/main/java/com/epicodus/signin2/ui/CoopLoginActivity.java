@@ -21,6 +21,11 @@ public class CoopLoginActivity extends AppCompatActivity {
     private EditText mCoopEmail, mCoopPassword;
     private Button mCoopSignInButton, mCoopCreateAccountButton;
 
+    public void clearFields() {
+        mCoopEmail.setText("");
+        mCoopPassword.setText("");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +53,8 @@ public class CoopLoginActivity extends AppCompatActivity {
                 if (bikeCollective != null) {
                     if (bikeCollective.getPassword().equals(coopPassword)) {
                         editor.putString("name", bikeCollective.getName());
-                        editor.commit();
+                        editor.apply();
+                        clearFields();
                         Intent intent = new Intent(CoopLoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         int i = 1;
@@ -59,6 +65,7 @@ public class CoopLoginActivity extends AppCompatActivity {
                             .setPositiveButton(android.R.string.ok, null);
                         dialog.create();
                         dialog.show();
+                        clearFields();
                     }
                 } else {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(CoopLoginActivity.this);
@@ -67,6 +74,7 @@ public class CoopLoginActivity extends AppCompatActivity {
                             .setPositiveButton(android.R.string.ok, null);
                     dialog.create();
                     dialog.show();
+                    clearFields();
                 }
             }
         });
@@ -78,5 +86,6 @@ public class CoopLoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
