@@ -53,19 +53,19 @@ public class CoopLoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         int i = 1;
                     } else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(CoopLoginActivity.this);
-                        builder.setMessage("Your email and password don't match.")
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(CoopLoginActivity.this);
+                        dialog.setMessage("Your email and password don't match.")
                             .setTitle("Oops!")
                             .setPositiveButton(android.R.string.ok, null);
-                        AlertDialog dialog = builder.create();
+                        dialog.create();
                         dialog.show();
                     }
                 } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CoopLoginActivity.this);
-                    builder.setMessage("You don't appear to be registered.")
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(CoopLoginActivity.this);
+                    dialog.setMessage("You don't appear to be registered.")
                             .setTitle("Oops!")
                             .setPositiveButton(android.R.string.ok, null);
-                    AlertDialog dialog = builder.create();
+                    dialog.create();
                     dialog.show();
                 }
             }

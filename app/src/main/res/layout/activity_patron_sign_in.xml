@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My name is..."
+        android:text="@string/patronNameLabel"
         android:id="@+id/nameTextView"
         android:textSize="20sp"
         android:layout_alignParentLeft="true"
@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I&apos;m here to..."
+        android:text="@string/patronPurposeLabel"
         android:id="@+id/purposeTextView"
         android:layout_below="@+id/nameEditText"
         android:layout_alignParentLeft="true"
@@ -57,14 +57,14 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fix my bike"
+            android:text="@string/radioFixBike"
             android:id="@+id/fixBikeRadioButton"
             android:layout_gravity="center_horizontal"
             android:checked="false" />
 
         <RadioButton
             android:layout_width="wrap_content"
-            android:text="Volunteer"
+            android:text="@string/radioVolunteer"
             android:id="@+id/volunteerRadioButton"
             android:layout_gravity="left|center_horizontal"
             android:checked="false" />
@@ -73,7 +73,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I&apos;ll probably be here for..."
+        android:text="@string/patronPurposeRadioGroupLabel"
         android:id="@+id/durationTextView"
         android:textSize="20sp"
         android:layout_below="@+id/purposeRadioGroup"
@@ -96,28 +96,28 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1 hour"
+            android:text="@string/oneHour"
             android:id="@+id/oneHourRadioButton"
             android:checked="false" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2 hours"
+            android:text="@string/twoHours"
             android:id="@+id/twoHourRadioButton"
             android:checked="false" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3 hours"
+            android:text="@string/threeHours"
             android:id="@+id/threeHourRadioButton"
             android:checked="false" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4 hours"
+            android:text="@string/fourHours"
             android:id="@+id/fourHoursRadioButton"
             android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/durationRadioGroup"
@@ -127,7 +127,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 hours"
+            android:text="@string/fiveHours"
             android:id="@+id/fiveHourRadioButton"
             android:checked="false" />
 
@@ -136,7 +136,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="73dp"
-        android:text="I agree and will participate"
+        android:text="@string/iAgreeButton"
         android:id="@+id/signInButton"
         android:layout_gravity="right"
         android:layout_below="@+id/agreementTextView"

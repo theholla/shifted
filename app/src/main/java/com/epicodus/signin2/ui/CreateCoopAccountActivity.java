@@ -43,12 +43,12 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                 String coopAgreement = mAgreement.getText().toString().trim();
 
                 BikeCollective alreadyRegistered = BikeCollective.find(coopEmail);
-                SharedPreferences.Editor editor = mPreferences.edit();
 
                 if (alreadyRegistered == null) {
                     BikeCollective newBikeCollective = new BikeCollective(coopName, coopEmail, coopPassword, coopAgreement);
                     newBikeCollective.save();
 
+                    SharedPreferences.Editor editor = mPreferences.edit();
                     editor.putString("email", newBikeCollective.getEmail());
                     editor.putString("password", newBikeCollective.getPassword());
                     editor.putString("name", newBikeCollective.getName());
@@ -58,12 +58,12 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                     Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CreateCoopAccountActivity.this);
-                    builder.setMessage("This email is already registered.")
-                            .setTitle("Oops!")
-                            .setPositiveButton(android.R.string.ok, null);
-                    AlertDialog dialog = builder.create();
-                    builder.show();
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(CreateCoopAccountActivity.this);
+                    dialog.setMessage("This email is already registered.")
+                        .setTitle("Oops!")
+                        .setPositiveButton(android.R.string.ok, null);
+                    dialog.create();
+                    dialog.show();
                 }
             }
         });

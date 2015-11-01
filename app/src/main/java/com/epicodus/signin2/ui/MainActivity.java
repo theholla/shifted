@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         mWelcomeText = (TextView) findViewById(R.id.welcomeText);
         mPatronSignInButton = (Button) findViewById(R.id.patronSignInButton);
         mAdminPanelButton = (Button) findViewById(R.id.adminPanelButton);
-//        mMainImageView = (ImageView) findViewById(R.id.mainImageView);
+   //     mMainImageView = (ImageView) findViewById(R.id.couch);
 
         if (!isLoggedIn()) {
             Intent intent = new Intent(this, CoopLoginActivity.class);
