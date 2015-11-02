@@ -1,9 +1,7 @@
 package com.epicodus.signin2.ui;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,11 +11,11 @@ import android.widget.TextView;
 
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
+import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
 public class CoopLoginActivity extends AppCompatActivity {
 
     private TextView mMainHeaderTextView;
-    private SharedPreferences mPreferences;
     private EditText mCoopEmail, mCoopPassword;
     private Button mCoopSignInButton, mCoopCreateAccountButton;
 
@@ -31,7 +29,7 @@ public class CoopLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coop_login);
 
-        mPreferences = getApplicationContext().getSharedPreferences("signinapp", Context.MODE_PRIVATE);
+       // mPreferences = getApplicationContext().getSharedPreferences("signinapp", Context.MODE_PRIVATE);
 
         mCoopEmail = (EditText) findViewById(R.id.coopEmailEditText);
         mCoopPassword = (EditText) findViewById(R.id.coopPasswordEditText);
@@ -48,16 +46,13 @@ public class CoopLoginActivity extends AppCompatActivity {
 
                 BikeCollective bikeCollective = BikeCollective.find(coopEmail);
 
-                SharedPreferences.Editor editor = mPreferences.edit();
-
                 if (bikeCollective != null) {
                     if (bikeCollective.getPassword().equals(coopPassword)) {
-//                        editor.putString("name", bikeCollective.getName());
-//                        editor.commit();
+                        ActiveBikeCollective.setActiveBikeCollective(bikeCollective);
                         clearFields();
+
                         Intent intent = new Intent(CoopLoginActivity.this, MainActivity.class);
                         startActivity(intent);
-                        int i = 1;
                     } else {
                         AlertDialog.Builder dialog = new AlertDialog.Builder(CoopLoginActivity.this);
                         dialog.setMessage("Your email and password don't match.")

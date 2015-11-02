@@ -1,8 +1,6 @@
 package com.epicodus.signin2.ui;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -14,10 +12,9 @@ import android.widget.TextView;
 
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
+import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
 public class MainActivity extends AppCompatActivity {
-    private SharedPreferences mPreferences;
-    private BikeCollective mBikeCollective;
     private TextView mWelcomeText;
     private Button mAdminPanelButton, mPatronSignInButton;
 
@@ -28,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPreferences = getApplicationContext().getSharedPreferences("signinapp", Context.MODE_PRIVATE);
-
         mWelcomeText = (TextView) findViewById(R.id.welcomeText);
         mPatronSignInButton = (Button) findViewById(R.id.patronSignInButton);
         mAdminPanelButton = (Button) findViewById(R.id.adminPanelButton);
 
-        if (!isLoggedIn()) {
+        setWelcomeText();
+
+        if (!ActiveBikeCollective.isLoggedIn()) {
             Intent intent = new Intent(this, CoopLoginActivity.class);
             startActivity(intent);
         }
@@ -48,21 +45,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isLoggedIn() {
-        String name = mPreferences.getString("name", null);
-        if (name == null) {
-            return false;
-        } else {
-            setBikeCollective(name);
-            return true;
-        }
-    }
-
-    private void setBikeCollective(String name) {
-        BikeCollective bikeCollective = BikeCollective.find(name);
+    private void setWelcomeText() {
+        BikeCollective bikeCollective = ActiveBikeCollective.getActiveBikeCollective();
         if (bikeCollective != null) {
-            mBikeCollective = bikeCollective;
-            mWelcomeText.setText(bikeCollective.getName() + "'s Sign In App");
+            mWelcomeText.setText("Welcome, " + bikeCollective.getName());
         }
     }
 
@@ -77,12 +63,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.action_logout) {
-            SharedPreferences.Editor editor = mPreferences.edit();
-            editor.clear();
-            editor.commit();
+            ActiveBikeCollective.logout();
+
             Intent intent = new Intent(this, CoopLoginActivity.class);
             startActivity(intent);
-
         }
 
         return super.onOptionsItemSelected(item);

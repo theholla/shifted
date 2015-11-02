@@ -1,9 +1,7 @@
 package com.epicodus.signin2.ui;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,12 +11,12 @@ import android.widget.TextView;
 
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
+import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
 public class CreateCoopAccountActivity extends AppCompatActivity {
     private EditText mName, mEmail, mPassword, mAgreement;
     private TextView mRegisterCoop, mRegisterCoopAgreement;
     private Button mRegisterCoopAccountButton;
-    private SharedPreferences mPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +30,6 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
         mRegisterCoop = (TextView) findViewById(R.id.registerCoopTextView);
         mRegisterCoopAgreement = (TextView) findViewById(R.id.registerCoopAgreementTextView);
         mRegisterCoopAccountButton = (Button) findViewById(R.id.registerCoopAccountButton);
-        mPreferences = getApplicationContext().getSharedPreferences("signinapp", Context.MODE_PRIVATE);
 
         mRegisterCoopAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,12 +45,7 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                     BikeCollective newBikeCollective = new BikeCollective(coopName, coopEmail, coopPassword, coopAgreement);
                     newBikeCollective.save();
 
-                    SharedPreferences.Editor editor = mPreferences.edit();
-                    editor.putString("email", newBikeCollective.getEmail());
-                    editor.putString("password", newBikeCollective.getPassword());
-                    editor.putString("name", newBikeCollective.getName());
-                    editor.putString("agreement", newBikeCollective.getAgreement());
-                    editor.commit();
+                    ActiveBikeCollective.setActiveBikeCollective(newBikeCollective);
 
                     Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
                     startActivity(intent);

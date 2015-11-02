@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coop Sign In Default Text"
+        android:text="@string/welcomeMessage"
         android:id="@+id/welcomeText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"

@@ -31,4 +31,5 @@
     <string name="fourHours">4 hours</string>
     <string name="fiveHours">5 hours</string>
     <string name="iAgreeButton">I agree and will participate</string>
+    <string name="welcomeMessage">Welcome</string>
 </resources>
