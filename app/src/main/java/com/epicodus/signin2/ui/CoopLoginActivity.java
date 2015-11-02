@@ -52,8 +52,8 @@ public class CoopLoginActivity extends AppCompatActivity {
 
                 if (bikeCollective != null) {
                     if (bikeCollective.getPassword().equals(coopPassword)) {
-                        editor.putString("name", bikeCollective.getName());
-                        editor.apply();
+//                        editor.putString("name", bikeCollective.getName());
+//                        editor.commit();
                         clearFields();
                         Intent intent = new Intent(CoopLoginActivity.this, MainActivity.class);
                         startActivity(intent);

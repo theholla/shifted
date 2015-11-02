@@ -9,8 +9,8 @@ import com.activeandroid.query.Select;
  * Created by admin on 10/30/15.
  */
 
-@Table(name="Patron", id="_id")
-public class Patron extends Model {
+@Table(name="Contact", id="_id")
+public class Contact extends Model {
     @Column(name="name")
     private String mName;
     @Column(name="password")
@@ -20,11 +20,11 @@ public class Patron extends Model {
     @Column(name="birthday")
     private String mBirthday;
 
-    public Patron() {
+    public Contact() {
         super();
     }
 
-    public Patron(String name, String password, String email, String birthday) {
+    public Contact(String name, String password, String email, String birthday) {
         this.mName = name;
         this.mPassword = password;
         this.mEmail = email;
@@ -63,9 +63,9 @@ public class Patron extends Model {
         mBirthday = birthday;
     }
 
-    public static Patron find(String email) {
+    public static Contact find(String email) {
         return new Select()
-                .from(Patron.class)
+                .from(Contact.class)
                 .where("Email = ?", email)
                 .executeSingle();
     }

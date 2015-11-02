@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private Button mAdminPanelButton, mPatronSignInButton;
 
 //  TODO: add image! Made app crash.
-//  private ImageView mMainImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mPreferences = getApplicationContext().getSharedPreferences("signinapp", Context.MODE_PRIVATE);
+
         mWelcomeText = (TextView) findViewById(R.id.welcomeText);
         mPatronSignInButton = (Button) findViewById(R.id.patronSignInButton);
         mAdminPanelButton = (Button) findViewById(R.id.adminPanelButton);
-   //     mMainImageView = (ImageView) findViewById(R.id.couch);
 
         if (!isLoggedIn()) {
             Intent intent = new Intent(this, CoopLoginActivity.class);
