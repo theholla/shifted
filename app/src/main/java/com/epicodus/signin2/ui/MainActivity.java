@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
+import com.facebook.stetho.Stetho;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mWelcomeText;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Stetho.initializeWithDefaults(this);
 
         mWelcomeText = (TextView) findViewById(R.id.welcomeText);
         mContactSignInRedirectButton = (Button) findViewById(R.id.contactSignInRedirectButton);
