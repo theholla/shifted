@@ -58,7 +58,7 @@ public class SignInEventAdapter extends BaseAdapter {
         ContactSignInEvent contactSignInEvent = mContactSignInEvents.get(position);
 
         holder.eventName.setText(contactSignInEvent.getName());
-        holder.eventType.setText("test");
+        holder.eventType.setText(contactSignInEvent.getContactType());
         holder.eventSignInTime.setText("test");
         holder.eventSignOutTime.setText("test");
 

@@ -43,10 +43,18 @@ public class ContactSignInEvent extends Model {
     }
 
     public static List<ContactSignInEvent> all() {
+        //TODO: retrieve only from active bikeCollective
         return new Select()
                 .from(ContactSignInEvent.class)
                 .orderBy("_id DESC")
                 .execute();
+    }
+
+    public static ContactSignInEvent find(ContactSignInEvent contactSignInEvent) {
+        return new Select()
+                .from(ContactSignInEvent.class)
+                .where("Name = ?", contactSignInEvent.getName())
+                .executeSingle();
     }
 
     public String getName() {
@@ -80,5 +88,4 @@ public class ContactSignInEvent extends Model {
     public void setSignOutTime(long signOutTime) {
         mSignOutTime = signOutTime;
     }
-
 }
