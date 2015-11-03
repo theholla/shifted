@@ -18,6 +18,13 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
     private TextView mRegisterCoop, mRegisterCoopAgreement;
     private Button mRegisterCoopAccountButton;
 
+    public void clearFields() {
+        mName.setText("");
+        mEmail.setText("");
+        mPassword.setText("");
+        mAgreement.setText("");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +51,16 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                 if (alreadyRegistered == null) {
                     BikeCollective newBikeCollective = new BikeCollective(coopName, coopEmail, coopPassword, coopAgreement);
                     newBikeCollective.save();
+                    clearFields();
 
                     ActiveBikeCollective.setActiveBikeCollective(newBikeCollective);
 
                     Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
+                    mPassword.setText("");
+                    mEmail.setText("");
+                    mEmail.requestFocus();
                     AlertDialog.Builder dialog = new AlertDialog.Builder(CreateCoopAccountActivity.this);
                     dialog.setMessage("This email is already registered.")
                         .setTitle("Oops!")
