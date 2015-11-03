@@ -39,8 +39,8 @@
                 android:value="com.epicodus.signin2.ui.CoopLoginActivity" />
         </activity>
         <activity
-            android:name=".ui.PatronSignInActivity"
-            android:label="@string/title_activity_patron_sign_in" >
+            android:name=".ui.ContactSignInActivity"
+            android:label="@string/title_activity_contact_sign_in" >
         </activity>
     </application>
 

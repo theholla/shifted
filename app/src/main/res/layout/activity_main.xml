@@ -17,8 +17,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/patronVolunteerSignInRedirect"
-        android:id="@+id/patronSignInButton"
+        android:text="@string/contactSignInRedirect"
+        android:id="@+id/contactSignInRedirectButton"
+        android:nextFocusDown="@+id/adminPanelButton"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/adminPanelButton" />
 
@@ -27,18 +28,19 @@
         android:layout_height="wrap_content"
         android:text="@string/adminPanelButton"
         android:id="@+id/adminPanelButton"
+        android:nextFocusDown="@+id/contactSignInButton"
         android:layout_marginBottom="49dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/patronSignInButton"
-        android:layout_alignEnd="@+id/patronSignInButton"
-        android:layout_alignLeft="@+id/patronSignInButton"
-        android:layout_alignStart="@+id/patronSignInButton" />
+        android:layout_alignRight="@+id/contactSignInRedirectButton"
+        android:layout_alignEnd="@+id/contactSignInRedirectButton"
+        android:layout_alignLeft="@+id/contactSignInRedirectButton"
+        android:layout_alignStart="@+id/contactSignInRedirectButton" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/couch"
-        android:layout_alignBottom="@+id/patronSignInButton"
+        android:layout_alignBottom="@+id/contactSignInRedirectButton"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -43,7 +43,7 @@ public class Contact extends Model {
         return mPassword;
     }
 
-    public void setmPassword(String password) {
+    public void setPassword(String password) {
         mPassword = password;
     }
 

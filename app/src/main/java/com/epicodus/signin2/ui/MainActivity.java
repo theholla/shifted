@@ -16,7 +16,7 @@ import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mWelcomeText;
-    private Button mAdminPanelButton, mPatronSignInButton;
+    private Button mAdminPanelButton, mContactSignInRedirectButton;
 
 //  TODO: add image! Made app crash.
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mWelcomeText = (TextView) findViewById(R.id.welcomeText);
-        mPatronSignInButton = (Button) findViewById(R.id.patronSignInButton);
+        mContactSignInRedirectButton = (Button) findViewById(R.id.contactSignInRedirectButton);
         mAdminPanelButton = (Button) findViewById(R.id.adminPanelButton);
 
         setWelcomeText();
@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        mPatronSignInButton.setOnClickListener(new View.OnClickListener() {
+        mContactSignInRedirectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PatronSignInActivity.class);
+                Intent intent = new Intent(MainActivity.this, ContactSignInActivity.class);
                 startActivity(intent);
             }
         });

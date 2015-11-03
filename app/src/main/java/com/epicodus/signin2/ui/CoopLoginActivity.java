@@ -29,8 +29,6 @@ public class CoopLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coop_login);
 
-       // mPreferences = getApplicationContext().getSharedPreferences("signinapp", Context.MODE_PRIVATE);
-
         mCoopEmail = (EditText) findViewById(R.id.coopEmailEditText);
         mCoopPassword = (EditText) findViewById(R.id.coopPasswordEditText);
 

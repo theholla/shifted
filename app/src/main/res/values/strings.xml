@@ -4,7 +4,7 @@
     <string name="action_logout">Logout</string>
     <string name="title_activity_coop_login">Coop Login</string>
     <string name="title_activity_create_coop_account">Create Coop Account</string>
-    <string name="title_activity_patron_sign_in">Sign In</string>
+    <string name="title_activity_contact_sign_in">Sign In</string>
     <string name="saferSpaceAgreement">Bike Farm is a cooperative space that is accepting and inclusive of every race, economic class, religion, nationality, sexual orientation, gender identity, age, ability, etc.</string>
     <string name="agreeementsLabel">Collective agreements:</string>
     <string name="coopInfoLabel">Please enter your email and choose a password:</string>
@@ -18,18 +18,12 @@
     <string name="loginCoopEmailHint">password</string>
     <string name="createCoopAccountButton">or create an account</string>
     <string name="coopLoginButton">sign in</string>
-    <string name="patronVolunteerSignInRedirect">Patron/Volunter Sign In</string>
+    <string name="contactSignInRedirect">Patron/Volunter Sign In</string>
     <string name="adminPanelButton">Admin Panel</string>
-    <string name="patronNameLabel">My name is...</string>
-    <string name="patronPurposeLabel">I\'m here to...</string>
+    <string name="contactNameLabel">My name is...</string>
+    <string name="contactPurposeLabel">I\'m here to...</string>
     <string name="radioFixBike">Fix my bike</string>
     <string name="radioVolunteer">Volunteer</string>
-    <string name="patronPurposeRadioGroupLabel">I\'ll probably be here for...</string>
-    <string name="oneHour">1 hour</string>
-    <string name="twoHours">2 hours</string>
-    <string name="threeHours">3 hours</string>
-    <string name="fourHours">4 hours</string>
-    <string name="fiveHours">5 hours</string>
     <string name="iAgreeButton">I agree and will participate</string>
     <string name="welcomeMessage">Welcome</string>
 </resources>
