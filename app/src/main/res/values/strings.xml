@@ -26,4 +26,9 @@
     <string name="radioVolunteer">Volunteer</string>
     <string name="iAgreeButton">I agree and will participate</string>
     <string name="welcomeMessage">Welcome</string>
+    <string name="title_activity_admin">AdminActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="signInListLabel" />
 </resources>
