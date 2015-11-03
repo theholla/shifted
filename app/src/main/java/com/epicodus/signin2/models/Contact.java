@@ -5,11 +5,8 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
-/**
- * Created by admin on 10/30/15.
- */
+@Table(name="contacts", id="_id")
 
-@Table(name="Contact", id="_id")
 public class Contact extends Model {
     @Column(name="name")
     private String mName;
@@ -19,16 +16,19 @@ public class Contact extends Model {
     private String mEmail;
     @Column(name="birthday")
     private String mBirthday;
+    @Column BikeCollective bikeCollective;
+    private BikeCollective mBikeCollective;
 
     public Contact() {
         super();
     }
 
-    public Contact(String name, String password, String email, String birthday) {
-        this.mName = name;
-        this.mPassword = password;
-        this.mEmail = email;
-        this.mBirthday = birthday;
+    public Contact(String name, String password, String email, String birthday, BikeCollective bikeCollective) {
+        mName = name;
+        mPassword = password;
+        mEmail = email;
+        mBirthday = birthday;
+        mBikeCollective = bikeCollective;
     }
 
     public String getName() {

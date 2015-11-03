@@ -5,10 +5,9 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
-/**
- * Created by admin on 10/29/15.
- */
-@Table(name="BikeCollective", id="_id")
+import java.util.List;
+
+@Table(name="bike_collectives", id="_id")
 
 public class BikeCollective extends Model {
     @Column(name="name")
@@ -20,10 +19,27 @@ public class BikeCollective extends Model {
     @Column (name="agreement")
     private String mAgreement;
 
-    //TODO: add address
-
     public BikeCollective() {
         super();
+    }
+
+    public BikeCollective(String name, String email, String password, String agreement) {
+        mName = name;
+        mEmail = email;
+        mPassword = password;
+        mAgreement = agreement;
+    }
+
+    public static List<BikeCollective> all() {
+        return new Select().from(BikeCollective.class).execute();
+    }
+
+    public List<Contact> contacts() {
+        return getMany(Contact.class, "BikeCollective");
+    }
+
+    public List<ContactSignInEvent> contactSignInEvents() {
+        return getMany(ContactSignInEvent.class, "BikeCollective");
     }
 
     public String getName() {
@@ -32,13 +48,6 @@ public class BikeCollective extends Model {
 
     public void setName(String name) {
         mName = name;
-    }
-
-    public BikeCollective(String name, String email, String password, String agreement) {
-        mName = name;
-        mEmail = email;
-        mPassword = password;
-        mAgreement = agreement;
     }
 
     public String getEmail() {

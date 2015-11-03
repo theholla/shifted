@@ -78,5 +78,5 @@ public class MainActivity extends AppCompatActivity {
  * implement scroll bar in safe space agreement
  * allow maneuvering with keyboard
  * top bar nav
- * make BikeCollective table in SQL plural
+ * implement hasMany relationship for ContactSignInEvents
  **/
