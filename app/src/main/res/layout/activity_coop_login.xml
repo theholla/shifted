@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/coopEmailEditText"
+        android:nextFocusDown="@+id/coopPasswordEditText"
         android:hint="@string/loginCoopEmail"
         android:inputType="textEmailAddress"
         android:layout_above="@+id/coopSignInButton"
@@ -38,6 +39,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/coopPasswordEditText"
+        android:nextFocusDown="@+id/coopSignInButton"
         android:hint="@string/loginCoopEmailHint"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -48,20 +50,22 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/createCoopAccountButton"
-        android:id="@+id/coopCreateAccountButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/coopLoginButton"
         android:id="@+id/coopSignInButton"
+        android:nextFocusDown="@+id/coopCreateAccountButton"
         android:layout_above="@+id/coopCreateAccountButton"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="78dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/createCoopAccountButton"
+        android:id="@+id/coopCreateAccountButton"
+        android:nextFocusDown="@+id/coopEmailEditText"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
