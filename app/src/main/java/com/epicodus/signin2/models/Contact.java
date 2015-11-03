@@ -31,6 +31,13 @@ public class Contact extends Model {
         mBikeCollective = bikeCollective;
     }
 
+    public static Contact find(String email) {
+        return new Select()
+                .from(Contact.class)
+                .where("Email = ?", email)
+                .executeSingle();
+    }
+
     public String getName() {
         return mName;
     }
@@ -61,12 +68,5 @@ public class Contact extends Model {
 
     public void setBirthday(String birthday) {
         mBirthday = birthday;
-    }
-
-    public static Contact find(String email) {
-        return new Select()
-                .from(Contact.class)
-                .where("Email = ?", email)
-                .executeSingle();
     }
 }

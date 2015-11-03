@@ -42,6 +42,13 @@ public class BikeCollective extends Model {
         return getMany(ContactSignInEvent.class, "BikeCollective");
     }
 
+    public static BikeCollective find(String email) {
+        return new Select()
+                .from(BikeCollective.class)
+                .where("Email = ?", email)
+                .executeSingle();
+    }
+
     public String getName() {
         return mName;
     }
@@ -72,13 +79,5 @@ public class BikeCollective extends Model {
 
     public void setAgreement(String agreement) {
         this.mAgreement = mAgreement;
-    }
-
-
-    public static BikeCollective find(String email) {
-        return new Select()
-                .from(BikeCollective.class)
-                .where("Email = ?", email)
-                .executeSingle();
     }
 }

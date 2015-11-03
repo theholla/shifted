@@ -42,6 +42,14 @@
             android:name=".ui.ContactSignInActivity"
             android:label="@string/title_activity_contact_sign_in" >
         </activity>
+        <activity
+            android:name=".ui.AdminActivity"
+            android:label="@string/title_activity_admin"
+            android:parentActivityName=".ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.signin2.ui.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
