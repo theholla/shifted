@@ -39,9 +39,17 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                 String coopPassword = mPassword.getText().toString().trim();
                 String coopAgreement = mAgreement.getText().toString().trim();
 
-                BikeCollective alreadyRegistered = BikeCollective.find(coopEmail);
-
-                if (alreadyRegistered == null) {
+                if (isAlreadyRegistered(coopEmail)) {
+                    mPassword.setText("");
+                    mEmail.setText("");
+                    mEmail.requestFocus();
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(CreateCoopAccountActivity.this);
+                    dialog.setMessage("This email is already registered.")
+                            .setTitle("Oops!")
+                            .setPositiveButton(android.R.string.ok, null);
+                    dialog.create();
+                    dialog.show();
+                } else {
                     BikeCollective newBikeCollective = new BikeCollective(coopName, coopEmail, coopPassword, coopAgreement);
                     newBikeCollective.save();
                     clearFields();
@@ -50,19 +58,17 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
                     startActivity(intent);
-                } else {
-                    mPassword.setText("");
-                    mEmail.setText("");
-                    mEmail.requestFocus();
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(CreateCoopAccountActivity.this);
-                    dialog.setMessage("This email is already registered.")
-                        .setTitle("Oops!")
-                        .setPositiveButton(android.R.string.ok, null);
-                    dialog.create();
-                    dialog.show();
                 }
             }
         });
+    }
+
+    public static boolean isAlreadyRegistered(String coopEmail) {
+        if (BikeCollective.find(coopEmail).equals(coopEmail)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void clearFields() {
