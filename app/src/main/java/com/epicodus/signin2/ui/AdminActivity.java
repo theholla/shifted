@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.adapters.SignInEventAdapter;
-import com.epicodus.signin2.models.ContactSignInEvent;
+import com.epicodus.signin2.models.SignInEvent;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ public class AdminActivity extends ListActivity {
     @Bind(R.id.signInListLabel) TextView mSignInListLabel;
 
     // TODO: Figure out @BindArray
-    private ContactSignInEvent mContactSignInEvent;
-    private ArrayList<ContactSignInEvent> mContactSignInEvents;
+    private SignInEvent mSignInEvent;
+    private ArrayList<SignInEvent> mSignInEvents;
     private SignInEventAdapter mAdapter;
     private ListView mListView;
 
@@ -38,19 +38,19 @@ public class AdminActivity extends ListActivity {
         setContentView(R.layout.activity_admin);
         ButterKnife.bind(this);
 
-        mContactSignInEvents = (ArrayList) ContactSignInEvent.all();
+        mSignInEvents = (ArrayList) SignInEvent.all();
         mListView = getListView();
 
-        mAdapter = new SignInEventAdapter(this, mContactSignInEvents);
+        mAdapter = new SignInEventAdapter(this, mSignInEvents);
         setListAdapter(mAdapter);
 
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                ContactSignInEvent contactSignInEvent = mContactSignInEvents.get(position);
-                ContactSignInEvent eventToDelete = ContactSignInEvent.find(contactSignInEvent);
+                SignInEvent signInEvent = mSignInEvents.get(position);
+                SignInEvent eventToDelete = SignInEvent.find(signInEvent);
                 eventToDelete.delete();
-                mContactSignInEvents.remove(contactSignInEvent);
+                mSignInEvents.remove(signInEvent);
                 mAdapter.notifyDataSetChanged();
                 Toast toast = Toast.makeText(AdminActivity.this, "You just deleted that sign-in event!", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);

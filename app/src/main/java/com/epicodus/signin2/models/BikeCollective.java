@@ -38,8 +38,8 @@ public class BikeCollective extends Model {
         return getMany(Contact.class, "BikeCollective");
     }
 
-    public List<ContactSignInEvent> contactSignInEvents() {
-        return getMany(ContactSignInEvent.class, "BikeCollective");
+    public List<SignInEvent> contactSignInEvents() {
+        return getMany(SignInEvent.class, "BikeCollective");
     }
 
     public static BikeCollective find(String email) {

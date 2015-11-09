@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.instanceOf;
 public class BikeCollectiveTest extends TestCase {
 
     @Test
-    public void bikeCollectiveInstantiates() throws Exception {
+    public void bikeCollectiveInstantiates() {
         BikeCollective bikeCollective = new BikeCollective("Bikerowave", "bike@bike.bike", "123", "Safety!");
         assertThat(bikeCollective, instanceOf(BikeCollective.class));
     }

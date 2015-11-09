@@ -8,27 +8,27 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.epicodus.signin2.R;
-import com.epicodus.signin2.models.ContactSignInEvent;
+import com.epicodus.signin2.models.SignInEvent;
 
 import java.util.ArrayList;
 
 public class SignInEventAdapter extends BaseAdapter {
     private Context mContext;
-    private ArrayList<ContactSignInEvent> mContactSignInEvents;
+    private ArrayList<SignInEvent> mSignInEvents;
 
-    public SignInEventAdapter(Context context, ArrayList<ContactSignInEvent> contactSignInEvents) {
+    public SignInEventAdapter(Context context, ArrayList<SignInEvent> signInEvents) {
         mContext = context;
-        mContactSignInEvents = contactSignInEvents;
+        mSignInEvents = signInEvents;
     }
 
     @Override
     public int getCount() {
-        return mContactSignInEvents.size();
+        return mSignInEvents.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mContactSignInEvents.get(position);
+        return mSignInEvents.get(position);
     }
 
     @Override
@@ -55,10 +55,10 @@ public class SignInEventAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        ContactSignInEvent contactSignInEvent = mContactSignInEvents.get(position);
+        SignInEvent signInEvent = mSignInEvents.get(position);
 
-        holder.eventName.setText(contactSignInEvent.getName());
-        holder.eventType.setText(contactSignInEvent.getContactType());
+        holder.eventName.setText(signInEvent.getName());
+        holder.eventType.setText(signInEvent.getContactType());
         holder.eventSignInTime.setText("test");
         holder.eventSignOutTime.setText("test");
 

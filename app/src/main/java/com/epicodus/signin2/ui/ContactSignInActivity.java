@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
-import com.epicodus.signin2.models.ContactSignInEvent;
+import com.epicodus.signin2.models.SignInEvent;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
 import butterknife.Bind;
@@ -44,8 +44,8 @@ public class ContactSignInActivity extends AppCompatActivity {
                 String contactEmail = "test";
                 String contactBirthday = "test";
 
-                ContactSignInEvent newContactSignInEvent = new ContactSignInEvent(contactName, contactType, bikeCollective);
-                newContactSignInEvent.save();
+                SignInEvent newSignInEvent = new SignInEvent(contactName, contactType, bikeCollective);
+                newSignInEvent.save();
 
                 //TODO: make this Toast into a modal
                 Toast toast = Toast.makeText(ContactSignInActivity.this, "Thanks for signing in!", Toast.LENGTH_LONG);

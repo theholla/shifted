@@ -10,7 +10,7 @@ import java.util.List;
 
 @Table(name="contact_sign_in_events", id="_id")
 
-public class ContactSignInEvent extends Model {
+public class SignInEvent extends Model {
     //TODO: make column for contact_id (from contact class) instead of name
     @Column(name="name")
     private String mName;
@@ -23,11 +23,11 @@ public class ContactSignInEvent extends Model {
     @Column(name="bike_collective")
     private BikeCollective mBikeCollective;
 
-    public ContactSignInEvent() {
+    public SignInEvent() {
         super();
     }
 
-    public ContactSignInEvent(String name, String contactType, BikeCollective bikeCollective) {
+    public SignInEvent(String name, String contactType, BikeCollective bikeCollective) {
         mName = name;
         mContactType = contactType;
         mBikeCollective = bikeCollective;
@@ -42,18 +42,18 @@ public class ContactSignInEvent extends Model {
         mBikeCollective = bikeCollective;
     }
 
-    public static List<ContactSignInEvent> all() {
+    public static List<SignInEvent> all() {
         //TODO: retrieve only from active bikeCollective
         return new Select()
-                .from(ContactSignInEvent.class)
+                .from(SignInEvent.class)
                 .orderBy("_id DESC")
                 .execute();
     }
 
-    public static ContactSignInEvent find(ContactSignInEvent contactSignInEvent) {
+    public static SignInEvent find(SignInEvent signInEvent) {
         return new Select()
-                .from(ContactSignInEvent.class)
-                .where("Name = ?", contactSignInEvent.getName())
+                .from(SignInEvent.class)
+                .where("Name = ?", signInEvent.getName())
                 .executeSingle();
     }
 
