@@ -20,10 +20,15 @@ import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class AdminActivity extends ListActivity {
+    @Bind(R.id.signInListLabel) TextView mSignInListLabel;
+
+    // TODO: Figure out @BindArray
     private ContactSignInEvent mContactSignInEvent;
     private ArrayList<ContactSignInEvent> mContactSignInEvents;
-    private TextView mSignInListLabel;
     private SignInEventAdapter mAdapter;
     private ListView mListView;
 
@@ -31,8 +36,8 @@ public class AdminActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        ButterKnife.bind(this);
 
-        mSignInListLabel = (TextView) findViewById(R.id.signInListLabel);
         mContactSignInEvents = (ArrayList) ContactSignInEvent.all();
         mListView = getListView();
 

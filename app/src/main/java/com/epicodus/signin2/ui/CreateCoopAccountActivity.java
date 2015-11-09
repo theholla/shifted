@@ -13,30 +13,23 @@ import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
-public class CreateCoopAccountActivity extends AppCompatActivity {
-    private EditText mName, mEmail, mPassword, mAgreement;
-    private TextView mRegisterCoop, mRegisterCoopAgreement;
-    private Button mRegisterCoopAccountButton;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-    public void clearFields() {
-        mName.setText("");
-        mEmail.setText("");
-        mPassword.setText("");
-        mAgreement.setText("");
-    }
+public class CreateCoopAccountActivity extends AppCompatActivity {
+    @Bind(R.id.registerCoopNameEditText) EditText mName;
+    @Bind(R.id.registerCoopEmailEditText) EditText mEmail;
+    @Bind(R.id.registerCoopPasswordEditText) EditText mPassword;
+    @Bind(R.id.registerCoopAgreementEditText) EditText mAgreement;
+    @Bind(R.id.registerCoopTextView) TextView mRegisterCoop;
+    @Bind(R.id.registerCoopAgreementTextView) TextView mRegisterCoopAgreement;
+    @Bind(R.id.registerCoopAccountButton) Button mRegisterCoopAccountButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_coop_account);
-
-        mName = (EditText) findViewById(R.id.registerCoopNameEditText);
-        mEmail = (EditText) findViewById(R.id.registerCoopEmailEditText);
-        mPassword = (EditText) findViewById(R.id.registerCoopPasswordEditText);
-        mAgreement = (EditText) findViewById(R.id.registerCoopAgreementEditText);
-        mRegisterCoop = (TextView) findViewById(R.id.registerCoopTextView);
-        mRegisterCoopAgreement = (TextView) findViewById(R.id.registerCoopAgreementTextView);
-        mRegisterCoopAccountButton = (Button) findViewById(R.id.registerCoopAccountButton);
+        ButterKnife.bind(this);
 
         mRegisterCoopAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,4 +64,12 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void clearFields() {
+        mName.setText("");
+        mEmail.setText("");
+        mPassword.setText("");
+        mAgreement.setText("");
+    }
+
 }

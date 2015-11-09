@@ -15,21 +15,20 @@ import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.models.ContactSignInEvent;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class ContactSignInActivity extends AppCompatActivity {
-    private TextView mAgreementsTextView;
-    private Button mContactSignInButton;
-    private EditText mContactName;
-    private RadioGroup mPurposeRadioGroup;
+    @Bind(R.id.contactSignInButton) Button mContactSignInButton;
+    @Bind(R.id.agreementTextView) TextView mAgreementsTextView;
+    @Bind(R.id.nameEditText) EditText mContactName;
+    @Bind(R.id.purposeRadioGroup) RadioGroup mPurposeRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_sign_in);
-
-        mContactSignInButton = (Button) findViewById(R.id.contactSignInButton);
-        mAgreementsTextView = (TextView) findViewById(R.id.agreementTextView);
-        mContactName = (EditText) findViewById(R.id.nameEditText);
-        mPurposeRadioGroup = (RadioGroup) findViewById(R.id.purposeRadioGroup);
+        ButterKnife.bind(this);
 
         setAgreementText();
 
@@ -64,6 +63,7 @@ public class ContactSignInActivity extends AppCompatActivity {
     }
 
     private void setAgreementText() {
+        // TODO: implement scroll bar in safe space agreement
         BikeCollective bikeCollective = ActiveBikeCollective.getActiveBikeCollective();
         if (bikeCollective != null) {
             mAgreementsTextView.setText(bikeCollective.getAgreement());

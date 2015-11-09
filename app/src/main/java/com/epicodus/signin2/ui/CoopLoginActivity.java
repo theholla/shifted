@@ -13,11 +13,15 @@ import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 
-public class CoopLoginActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-    private TextView mMainHeaderTextView;
-    private EditText mCoopEmail, mCoopPassword;
-    private Button mCoopSignInButton, mCoopCreateAccountButton;
+public class CoopLoginActivity extends AppCompatActivity {
+    @Bind(R.id.coopEmailEditText) EditText mCoopEmail;
+    @Bind(R.id.coopPasswordEditText) EditText mCoopPassword;
+    @Bind(R.id.coopSignInButton) Button mCoopSignInButton;
+    @Bind(R.id.coopCreateAccountButton) Button mCoopCreateAccountButton;
+    @Bind(R.id.mainHeaderTextView) TextView mMainHeaderTextView;
 
     public void clearFields() {
         mCoopEmail.setText("");
@@ -28,13 +32,7 @@ public class CoopLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coop_login);
-
-        mCoopEmail = (EditText) findViewById(R.id.coopEmailEditText);
-        mCoopPassword = (EditText) findViewById(R.id.coopPasswordEditText);
-
-        mMainHeaderTextView = (TextView) findViewById(R.id.mainHeaderTextView);
-        mCoopSignInButton = (Button) findViewById(R.id.coopSignInButton);
-        mCoopCreateAccountButton = (Button) findViewById(R.id.coopCreateAccountButton);
+        ButterKnife.bind(this);
 
         mCoopSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override

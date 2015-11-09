@@ -15,21 +15,20 @@ import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 import com.facebook.stetho.Stetho;
 
-public class MainActivity extends AppCompatActivity {
-    private TextView mWelcomeText;
-    private Button mAdminPanelButton, mContactSignInRedirectButton;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-//  TODO: add image! Made app crash.
+public class MainActivity extends AppCompatActivity {
+    @Bind(R.id.welcomeText) TextView mWelcomeText;
+    @Bind(R.id.contactSignInRedirectButton) Button mContactSignInRedirectButton;
+    @Bind(R.id.adminPanelButton) Button mAdminPanelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Stetho.initializeWithDefaults(this);
-
-        mWelcomeText = (TextView) findViewById(R.id.welcomeText);
-        mContactSignInRedirectButton = (Button) findViewById(R.id.contactSignInRedirectButton);
-        mAdminPanelButton = (Button) findViewById(R.id.adminPanelButton);
+        ButterKnife.bind(this);
 
         setWelcomeText();
 
@@ -56,13 +55,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setWelcomeText() {
-        BikeCollective bikeCollective = ActiveBikeCollective.getActiveBikeCollective();
-        if (bikeCollective != null) {
-            mWelcomeText.setText("Welcome, " + bikeCollective.getName());
-        }
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -82,12 +74,18 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void setWelcomeText() {
+        BikeCollective bikeCollective = ActiveBikeCollective.getActiveBikeCollective();
+        if (bikeCollective != null) {
+            mWelcomeText.setText("Welcome, " + bikeCollective.getName());
+        }
+    }
 }
 
 /**
- * TODO: only store bikecollectives in one place, preferences or sql
- * implement scroll bar in safe space agreement
- * allow maneuvering with keyboard
- * top bar nav
- * implement hasMany relationship for ContactSignInEvents
+ * TODO: allow maneuvering with keyboard
+ * TODO: top bar nav
+ * TODO: implement hasMany relationship for ContactSignInEvents
+ * TODO: add image to MainActivity
  **/
