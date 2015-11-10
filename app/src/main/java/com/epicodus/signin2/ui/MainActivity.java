@@ -3,6 +3,7 @@ package com.epicodus.signin2.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +15,10 @@ import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 import com.facebook.stetho.Stetho;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,6 +34,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Stetho.initializeWithDefaults(this);
         ButterKnife.bind(this);
+
+        // TODO: initialize Parse in SignInApp.java instead
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(MainActivity.this);
+        Parse.initialize(MainActivity.this, "dOCMN4er20zZtpSZfGHuy3mJ5tb3Dmz1eIIUl41i", "wOAFcA233sW0LH8ilIsWQJ0JsIgGasTQMjjBJpgB");
+
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        Log.e("PARSE.COM", "DOWNLOAD STARTED");
+        testObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e("PARSE.COM", "FAILED" + e.getMessage());
+                } else {
+                    Log.e("PARSE.COM", "SUCCESS");
+                }
+            }
+        });
 
         setWelcomeText();
 
