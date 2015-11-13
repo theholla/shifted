@@ -1,34 +1,52 @@
 <resources>
+    <!-- Manifest -->
     <string name="app_name">Bicycle Collective Sign In App</string>
-
-    <string name="action_logout">Logout</string>
     <string name="title_activity_coop_login">Coop Login</string>
-    <string name="title_activity_create_coop_account">Create Coop Account</string>
+    <string name="title_activity_create_coop_account">Register Your Coop</string>
     <string name="title_activity_contact_sign_in">Sign In</string>
-    <string name="saferSpaceAgreement">Bike Farm is a cooperative space that is accepting and inclusive of every race, economic class, religion, nationality, sexual orientation, gender identity, age, ability, etc.</string>
-    <string name="agreeementsLabel">Collective agreements:</string>
-    <string name="coopInfoLabel">Please enter your email and choose a password:</string>
-    <string name="coopEmailHint">coop email</string>
-    <string name="registerButton">Register</string>
-    <string name="coopPasswordHint">choose a password</string>
-    <string name="coopNameHint">name of coop</string>
-    <string name="coopAgreementHint">Patrons and volunteers agree to...</string>
+    <string name="title_activity_admin">Admin Panel</string>
+
+    <!-- Nav bar -->
+    <string name="action_logout">Logout</string>
+
+    <!-- Admin Activity -->
+    <string name="signInListLabel">Sign in list</string>
+
+    <!-- Contact Sign In Activity -->
+    <string name="contactNameLabel">My name is</string>
+    <string name="contactPurposeLabel">I\'m here to</string>
+    <string name="radioFixBike">Fix my bike</string>
+    <string name="radioVolunteer">Volunteer</string>
+    <string name="saferSpaceAgreement">Safer space agreement goes here</string>
+    <string name="iAgreeButton">I agree and will participate</string>
+
+    <!-- Coop Login Activity -->
     <string name="loginCoopName">Hey, What\'s Your Bike Collective?</string>
     <string name="loginCoopEmail">coop email</string>
     <string name="loginCoopEmailHint">password</string>
     <string name="createCoopAccountButton">or create an account</string>
     <string name="coopLoginButton">sign in</string>
+
+    <!-- Create Coop Account Activity -->
+    <string name="coopInfoLabel">Please enter your email and choose a password:</string>
+    <string name="coopEmailHint">coop email</string>
+    <string name="coopPasswordHint">choose a password</string>
+    <string name="coopNameHint">name of coop</string>
+    <string name="agreementsLabel">Collective agreements:</string>
+    <string name="coopAgreementHint">Patrons and volunteers agree to</string>
+    <string name="registerButton">Register</string>
+
+    <!-- Main Activity -->
+    <string name="welcomeMessage">Welcome</string>
     <string name="contactSignInRedirect">Patron/Volunter Sign In</string>
     <string name="adminPanelButton">Admin Panel</string>
-    <string name="contactNameLabel">My name is...</string>
-    <string name="contactPurposeLabel">I\'m here to...</string>
-    <string name="radioFixBike">Fix my bike</string>
-    <string name="radioVolunteer">Volunteer</string>
-    <string name="iAgreeButton">I agree and will participate</string>
-    <string name="welcomeMessage">Welcome</string>
-    <string name="title_activity_admin">AdminActivity</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="signInListLabel" />
+    <!-- Sign In Event -->
+    <string name="name">Name</string>
+    <string name="role">Vol/Pat/Emp</string>
+    <string name="signedInAt">Signed in at:</string>
+    <string name="dateTime">DateTime</string>
+    <string name="signedOutAt">Signed out at:</string>
+    <string name="dateTimeOut">DateTimeOut</string>
+
 </resources>

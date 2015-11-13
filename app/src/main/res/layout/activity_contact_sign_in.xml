@@ -15,6 +15,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:padding="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:textStyle="bold" />
 
@@ -62,10 +63,11 @@
 
         <RadioButton
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/radioVolunteer"
             android:id="@+id/volunteerRadioButton"
             android:nextFocusDown="@+id/contactSignInButton"
-            android:layout_gravity="left|center_horizontal"
+            android:layout_gravity="start|center_horizontal"
             android:checked="false" />
     </RadioGroup>
 
@@ -85,7 +87,7 @@
         android:layout_height="73dp"
         android:text="@string/iAgreeButton"
         android:id="@+id/contactSignInButton"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
