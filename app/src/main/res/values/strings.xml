@@ -19,6 +19,12 @@
     <string name="radioVolunteer">Volunteer</string>
     <string name="saferSpaceAgreement">Safer space agreement goes here</string>
     <string name="iAgreeButton">I agree and will participate</string>
+    <string name="error_choose_purpose">Please choose whether you are volunteering or fixing your steed.</string>
+    <string name="error_name">Please type your name!</string>
+    <string name="dialog_oops">Oops!</string>
+    <string name="dialog_thanks">Thanks!</string>
+    <string name="dialog_signedin">You\'re all signed in</string>
+
 
     <!-- Coop Login Activity -->
     <string name="loginCoopName">Hey, What\'s Your Bike Collective?</string>
