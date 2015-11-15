@@ -26,12 +26,11 @@
         android:nextFocusDown="@+id/coopPasswordEditText"
         android:hint="@string/loginCoopEmail"
         android:inputType="textEmailAddress"
-        android:layout_above="@+id/coopSignInButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="78dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/coopPasswordEditText"
+        android:layout_alignEnd="@+id/coopPasswordEditText"
+        android:layout_alignLeft="@+id/coopPasswordEditText"
+        android:layout_alignStart="@+id/coopPasswordEditText" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -41,11 +40,8 @@
         android:id="@+id/coopPasswordEditText"
         android:nextFocusDown="@+id/coopSignInButton"
         android:hint="@string/loginCoopEmailHint"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/coopEmailEditText"
-        android:layout_alignEnd="@+id/coopEmailEditText" />
+        android:layout_above="@+id/coopSignInButton"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -56,16 +52,19 @@
         android:layout_above="@+id/coopCreateAccountButton"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="78dp" />
+        android:layout_marginBottom="78dp"
+        android:background="@drawable/button_raised" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="?android:attr/borderlessButtonStyle"
         android:text="@string/createCoopAccountButton"
         android:id="@+id/coopCreateAccountButton"
         android:nextFocusDown="@+id/coopEmailEditText"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/button_raised" />
 
 </RelativeLayout>

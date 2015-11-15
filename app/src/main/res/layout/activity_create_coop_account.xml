@@ -83,6 +83,7 @@
         android:layout_alignRight="@+id/registerCoopPasswordEditText"
         android:layout_alignEnd="@+id/registerCoopPasswordEditText"
         android:layout_alignLeft="@+id/registerCoopPasswordEditText"
-        android:layout_alignStart="@+id/registerCoopPasswordEditText" />
+        android:layout_alignStart="@+id/registerCoopPasswordEditText"
+        android:background="@drawable/button_raised" />
 
 </RelativeLayout>

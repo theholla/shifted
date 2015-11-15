@@ -89,6 +89,7 @@
         android:id="@+id/contactSignInButton"
         android:layout_gravity="end"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_raised" />
 
 </RelativeLayout>
