@@ -1,0 +1,21 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'material-design-icons' ]
+2 info using npm@3.3.4
+3 info using node@v0.12.7
+4 verbose stack Error: EEXIST, mkdir '/Users/admin/npm'
+4 verbose stack     at Error (native)
+5 verbose cwd /Users/admin/AndroidStudioProjects/SignIn2
+6 error Darwin 14.5.0
+7 error argv "node" "/usr/local/bin/npm" "install" "material-design-icons"
+8 error node v0.12.7
+9 error npm  v3.3.4
+10 error path /Users/admin/npm
+11 error code EEXIST
+12 error errno -17
+13 error EEXIST, mkdir '/Users/admin/npm'
+File exists: /Users/admin/npm
+Move it away, and try again.
+14 verbose exit [ -17, true ]
