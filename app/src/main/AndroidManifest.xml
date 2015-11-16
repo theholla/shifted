@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.epicodus.signin2" >
-    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="21" />
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="21" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.activeandroid.app.Application"
@@ -17,13 +25,13 @@
             android:theme="@style/MyMaterialTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.CoopLoginActivity"
-            android:label="@string/title_activity_coop_login">
+            android:label="@string/title_activity_coop_login" >
         </activity>
 
         <meta-data
@@ -41,15 +49,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.signin2.ui.CoopLoginActivity" />
         </activity>
-
         <activity
             android:name=".ui.ContactSignInActivity"
             android:label="@string/title_activity_contact_sign_in" >
         </activity>
-
         <activity
             android:name=".ui.AdminActivity"
             android:label="@string/title_activity_admin"
+            android:parentActivityName=".ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.signin2.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.DataActivity"
+            android:label="@string/title_activity_data"
             android:parentActivityName=".ui.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

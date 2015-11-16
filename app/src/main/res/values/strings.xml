@@ -45,7 +45,7 @@
 
     <!-- Main Activity -->
     <string name="welcomeMessage">Welcome</string>
-    <string name="contactSignInRedirect">Patron/Volunter Sign In</string>
+    <string name="dataVis">Data Visualization</string>
     <string name="adminPanelButton">Admin Panel</string>
 
     <!-- Sign In Event -->
@@ -61,5 +61,9 @@
     <string name="dialog_thanks">Thanks!</string>
     <string name="error_fill_all_fields">Please fill all required fields</string>
     <string name="dialog_registered_coop">You successfully registered your coop.</string>
+    <string name="title_activity_data">Data</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
