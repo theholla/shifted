@@ -1,10 +1,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.epicodus.signin2.ui.ContactSignInActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,14 +24,15 @@
         android:text="@string/contactNameLabel"
         android:id="@+id/nameTextView"
         android:textSize="20sp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:padding="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/nameEditText"
+        android:layout_toLeftOf="@+id/nameEditText"
+        android:layout_toStartOf="@+id/nameEditText"
+        android:paddingRight="15dp" />
 
     <EditText
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -27,30 +40,30 @@
         android:id="@+id/nameEditText"
         android:nextFocusDown="@+id/fixBikeRadioButton"
         android:padding="15dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/nameTextView"
-        android:layout_toEndOf="@+id/nameTextView" />
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="39dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/contactPurposeLabel"
         android:id="@+id/purposeTextView"
-        android:layout_below="@+id/nameEditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_above="@+id/purposeRadioGroup"
+        android:layout_alignLeft="@+id/nameTextView"
+        android:layout_alignStart="@+id/nameTextView" />
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/purposeRadioGroup"
-        android:layout_alignTop="@+id/purposeTextView"
-        android:layout_marginTop="55dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/nameEditText"
+        android:layout_alignStart="@+id/nameEditText"
+        android:paddingBottom="15dp">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -71,25 +84,36 @@
             android:checked="false" />
     </RadioGroup>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/saferSpaceAgreement"
-        android:id="@+id/agreementTextView"
-        android:layout_above="@+id/contactSignInButton"
+        android:id="@+id/scrollView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="43dp" />
+        android:layout_alignRight="@+id/nameEditText"
+        android:layout_alignEnd="@+id/nameEditText"
+        android:layout_above="@+id/contactSignInButton"
+        android:layout_below="@+id/purposeRadioGroup">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/saferSpaceAgreement"
+            android:id="@+id/agreementTextView"/>
+    </ScrollView>
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="73dp"
+        android:layout_height="50dp"
         android:text="@string/iAgreeButton"
         android:id="@+id/contactSignInButton"
         android:layout_gravity="end"
-        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_raised"
+        android:layout_below="@+id/purposeRadioGroup"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/button_raised" />
+        android:layout_marginTop="76dp" />
 
 </RelativeLayout>

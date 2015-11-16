@@ -1,17 +1,17 @@
 package com.epicodus.signin2.ui;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.adapters.SignInEventAdapter;
@@ -24,19 +24,23 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class AdminActivity extends ListActivity {
-    @Bind(R.id.signInListLabel) TextView mSignInListLabel;
 
     // TODO: Figure out @BindArray
+
     private SignInEvent mSignInEvent;
     private ArrayList<SignInEvent> mSignInEvents;
     private SignInEventAdapter mAdapter;
     private ListView mListView;
+    @Bind(R.id.toolbar) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         ButterKnife.bind(this);
+
+//        setSupportActionBar(mToolbar);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mSignInEvents = (ArrayList) SignInEvent.all();
         mListView = getListView();
@@ -46,19 +50,39 @@ public class AdminActivity extends ListActivity {
 
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                SignInEvent signInEvent = mSignInEvents.get(position);
-                SignInEvent eventToDelete = SignInEvent.find(signInEvent);
-                eventToDelete.delete();
-                mSignInEvents.remove(signInEvent);
-                mAdapter.notifyDataSetChanged();
-                Toast toast = Toast.makeText(AdminActivity.this, "You just deleted that sign-in event!", Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast.show();
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(AdminActivity.this);
+                dialog.setTitle("Alert")
+                        .setMessage("Are you sure you want to delete this entry?")
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                removeSignInEvent(position);
+                                dialog.dismiss();
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                dialog.create();
+                dialog.show();
                 return false;
             }
         });
 
+    }
+
+    //TODO: investigage delete() and remove(), and attach to parse
+    private void removeSignInEvent(int position) {
+        SignInEvent signInEvent = mSignInEvents.get(position);
+        SignInEvent eventToDelete = SignInEvent.find(signInEvent);
+        eventToDelete.delete();
+        mSignInEvents.remove(signInEvent);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

@@ -1,8 +1,12 @@
 package com.epicodus.signin2.ui;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,12 +29,16 @@ public class ContactSignInActivity extends AppCompatActivity {
     @Bind(R.id.purposeRadioGroup) RadioGroup mPurposeRadioGroup;
     @Bind(R.id.fixBikeRadioButton) RadioButton mFixBikeRadioButton;
     @Bind(R.id.volunteerRadioButton) RadioButton mVolunteerRadioButon;
+    @Bind(R.id.toolbar) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_sign_in);
         ButterKnife.bind(this);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         setAgreementText();
 
@@ -72,11 +80,27 @@ public class ContactSignInActivity extends AppCompatActivity {
     }
 
     private void setAgreementText() {
-        // TODO: implement scroll bar in safe space agreement
         BikeCollective bikeCollective = ActiveBikeCollective.getActiveBikeCollective();
         if (bikeCollective != null) {
             mAgreementsTextView.setText(bikeCollective.getAgreement());
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_contact_sign_in, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.action_home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

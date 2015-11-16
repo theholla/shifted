@@ -1,6 +1,6 @@
 <resources>
     <!-- Manifest -->
-    <string name="app_name">Bicycle Collective Sign In App</string>
+    <string name="app_name">Bike Coop Sign In</string>
     <string name="title_activity_coop_login">Coop Login</string>
     <string name="title_activity_create_coop_account">Register Your Coop</string>
     <string name="title_activity_contact_sign_in">Sign In</string>
@@ -8,24 +8,26 @@
 
     <!-- Nav bar -->
     <string name="action_logout">Logout</string>
+    <string name="action_sign_in">Sign In</string>
+    <string name="action_admin">Stats</string>
+    <string name="action_home">Home</string>
 
     <!-- Admin Activity -->
     <string name="signInListLabel">Sign in list</string>
 
     <!-- Contact Sign In Activity -->
-    <string name="contactNameLabel">My name is</string>
-    <string name="contactPurposeLabel">I\'m here to</string>
+    <string name="contactNameLabel">My name is: </string>
+    <string name="contactPurposeLabel">I\'m here to: </string>
     <string name="radioFixBike">Fix my bike</string>
     <string name="radioVolunteer">Volunteer</string>
     <string name="saferSpaceAgreement">Safer space agreement goes here</string>
-    <string name="iAgreeButton">I agree and will participate</string>
+    <string name="iAgreeButton">Go</string>
     <string name="error_choose_purpose">Please choose whether you are volunteering or fixing your steed.</string>
     <string name="error_name">Please type your name!</string>
     <string name="dialog_signedin">You\'re all signed in</string>
 
-
     <!-- Coop Login Activity -->
-    <string name="loginCoopName">Hey, What\'s Your Bike Collective?</string>
+    <string name="loginCoopName">Hey Bike Coop, Sign In Here!</string>
     <string name="loginCoopEmail">coop email</string>
     <string name="loginCoopEmailHint">password</string>
     <string name="createCoopAccountButton">or create an account</string>

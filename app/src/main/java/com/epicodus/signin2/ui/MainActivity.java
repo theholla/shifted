@@ -3,8 +3,8 @@ package com.epicodus.signin2.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,10 +14,6 @@ import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 import com.facebook.stetho.Stetho;
-import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.SaveCallback;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.welcomeText) TextView mWelcomeText;
     @Bind(R.id.contactSignInRedirectButton) Button mContactSignInRedirectButton;
     @Bind(R.id.adminPanelButton) Button mAdminPanelButton;
+    @Bind(R.id.toolbar) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +31,17 @@ public class MainActivity extends AppCompatActivity {
         Stetho.initializeWithDefaults(this);
         ButterKnife.bind(this);
 
-        // TODO: initialize Parse in SignInApp.java instead
-        // Enable Local Datastore.
-        Parse.enableLocalDatastore(MainActivity.this);
-        Parse.initialize(MainActivity.this, "dOCMN4er20zZtpSZfGHuy3mJ5tb3Dmz1eIIUl41i", "wOAFcA233sW0LH8ilIsWQJ0JsIgGasTQMjjBJpgB");
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        Log.e("PARSE.COM", "DOWNLOAD STARTED");
-        testObject.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e != null) {
-                    Log.e("PARSE.COM", "FAILED" + e.getMessage());
-                } else {
-                    Log.e("PARSE.COM", "SUCCESS");
-                }
-            }
-        });
+        // TODO: initialize Parse in SignInApp.java instead
+//        Parse.enableLocalDatastore(MainActivity.this);
+//        Parse.initialize(MainActivity.this, "dOCMN4er20zZtpSZfGHuy3mJ5tb3Dmz1eIIUl41i", "wOAFcA233sW0LH8ilIsWQJ0JsIgGasTQMjjBJpgB");
 
         setWelcomeText();
 
         if (!ActiveBikeCollective.isLoggedIn()) {
-            Intent intent = new Intent(this, CoopLoginActivity.class);
-            startActivity(intent);
+            goToPage(CoopLoginActivity.class);
         }
 
         mContactSignInRedirectButton.setOnClickListener(new View.OnClickListener() {
@@ -80,22 +64,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
+
         if (itemId == R.id.action_logout) {
             ActiveBikeCollective.logout();
-
-            Intent intent = new Intent(this, CoopLoginActivity.class);
-            startActivity(intent);
+            goToPage(CoopLoginActivity.class);
+        } else if (itemId == R.id.action_sign_in) {
+            goToPage(ContactSignInActivity.class);
+        } else if (itemId == R.id.action_admin) {
+            goToPage(AdminActivity.class);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void goToPage(Class newActivity) {
+        Intent intent = new Intent(this, newActivity);
+        startActivity(intent);
     }
 
     private void setWelcomeText() {
@@ -105,10 +96,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-/**
- * TODO: allow maneuvering with keyboard
- * TODO: top bar nav
- * TODO: implement hasMany relationship for ContactSignInEvents
- * TODO: add image to MainActivity
- **/
