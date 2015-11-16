@@ -60,7 +60,7 @@ public class SignInEventAdapter extends BaseAdapter {
         holder.eventName.setText(signInEvent.getName());
         holder.eventType.setText(signInEvent.getContactType());
         holder.eventSignInTime.setText("test");
-        holder.eventSignOutTime.setText("test");
+        holder.eventSignOutTime.setText("");
 
         return convertView;
     }

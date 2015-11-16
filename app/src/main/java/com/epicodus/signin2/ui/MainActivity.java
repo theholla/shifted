@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.welcomeText) TextView mWelcomeText;
-    @Bind(R.id.contactSignInRedirectButton) Button mContactSignInRedirectButton;
+    @Bind(R.id.dataVizButton) Button mDataVizButton;
     @Bind(R.id.adminPanelButton) Button mAdminPanelButton;
     @Bind(R.id.toolbar) Toolbar mToolbar;
 
@@ -34,20 +34,16 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        // TODO: initialize Parse in SignInApp.java instead
-//        Parse.enableLocalDatastore(MainActivity.this);
-//        Parse.initialize(MainActivity.this, "dOCMN4er20zZtpSZfGHuy3mJ5tb3Dmz1eIIUl41i", "wOAFcA233sW0LH8ilIsWQJ0JsIgGasTQMjjBJpgB");
-
         setWelcomeText();
 
         if (!ActiveBikeCollective.isLoggedIn()) {
             goToPage(CoopLoginActivity.class);
         }
 
-        mContactSignInRedirectButton.setOnClickListener(new View.OnClickListener() {
+        mDataVizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ContactSignInActivity.class);
+                Intent intent = new Intent(MainActivity.this, DataActivity.class);
                 startActivity(intent);
             }
         });
