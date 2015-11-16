@@ -34,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        // TODO: initialize Parse in SignInApp.java instead
-//        Parse.enableLocalDatastore(MainActivity.this);
-//        Parse.initialize(MainActivity.this, "dOCMN4er20zZtpSZfGHuy3mJ5tb3Dmz1eIIUl41i", "wOAFcA233sW0LH8ilIsWQJ0JsIgGasTQMjjBJpgB");
-
         setWelcomeText();
 
         if (!ActiveBikeCollective.isLoggedIn()) {
