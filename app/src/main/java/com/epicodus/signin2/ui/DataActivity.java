@@ -85,7 +85,7 @@ public class DataActivity extends Activity {
             xVals.add(xData[i]);
 
         // create pie data set
-        PieDataSet dataSet = new PieDataSet(yVals1, "Market Share");
+        PieDataSet dataSet = new PieDataSet(yVals1, "Contact Type");
         dataSet.setSliceSpace(3);
         dataSet.setSelectionShift(5);
 

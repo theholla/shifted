@@ -5,6 +5,11 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +22,7 @@ public class SignInEvent extends Model {
     @Column(name="contact_type")
     private String mContactType;
     @Column(name="sign_in_time")
-    private long mSignInTme;
+    private long mSignInTime;
     @Column(name="sign_out_time")
     private long mSignOutTime;
     @Column(name="bike_collective")
@@ -31,7 +36,7 @@ public class SignInEvent extends Model {
         mName = name;
         mContactType = contactType;
         mBikeCollective = bikeCollective;
-        mSignInTme = new Date().getTime();
+        mSignInTime = new Date().getTime();
     }
 
     public BikeCollective getBikeCollective() {
@@ -73,16 +78,40 @@ public class SignInEvent extends Model {
         mContactType = contactType;
     }
 
-    public long getSignInTme() {
-        return mSignInTme;
+    public long getSignInTime() {
+        return mSignInTime;
     }
 
-    public void setSignInTme(long signInTme) {
-        mSignInTme = signInTme;
+    public String getFormattedSignInTime() {
+        SimpleDateFormat format = new SimpleDateFormat("h:mm a");
+        String timeToString = format.format(mSignInTime);
+        return timeToString;
+    }
+
+    public String getFormattedSignInDate() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String dateToString = format.format(mSignInTime);
+        return dateToString;
+    }
+
+    public void setSignInTime(long signInTime) {
+        mSignInTime = signInTime;
     }
 
     public long getSignOutTime() {
         return mSignOutTime;
+    }
+
+    public String getFormattedSignOutTime() {
+        SimpleDateFormat format = new SimpleDateFormat("h:mm a");
+        String timeToString = format.format(mSignOutTime);
+        return timeToString;
+    }
+
+    public String getFormattedSignOutDate() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String dateToString = format.format(mSignOutTime);
+        return dateToString;
     }
 
     public void setSignOutTime(long signOutTime) {
