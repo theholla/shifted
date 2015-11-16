@@ -5,6 +5,7 @@
     <string name="title_activity_create_coop_account">Register Your Coop</string>
     <string name="title_activity_contact_sign_in">Sign In</string>
     <string name="title_activity_admin">Admin Panel</string>
+    <string name="title">Bike Coop Sign In</string>
 
     <!-- Nav bar -->
     <string name="action_logout">Logout</string>
@@ -37,7 +38,7 @@
     <string name="coopInfoLabel">Please enter your email and choose a password:</string>
     <string name="coopEmailHint">coop email</string>
     <string name="coopPasswordHint">choose a password</string>
-    <string name="coopNameHint">name of coop</string>
+    <string name="coopNameHint">coop name</string>
     <string name="agreementsLabel">Collective agreements:</string>
     <string name="coopAgreementHint">Patrons and volunteers agree to</string>
     <string name="registerButton">Register</string>
@@ -63,7 +64,5 @@
     <string name="dialog_registered_coop">You successfully registered your coop.</string>
     <string name="title_activity_data">Data</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
 
 </resources>

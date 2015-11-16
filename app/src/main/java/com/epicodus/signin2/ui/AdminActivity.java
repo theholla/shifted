@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,9 +40,6 @@ public class AdminActivity extends ListActivity {
         setContentView(R.layout.activity_admin);
         ButterKnife.bind(this);
 
-//        setSupportActionBar(mToolbar);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         mSignInEvents = (ArrayList) SignInEvent.all();
         mListView = getListView();
 
@@ -73,10 +71,9 @@ public class AdminActivity extends ListActivity {
                 return false;
             }
         });
-
     }
 
-    //TODO: investigage delete() and remove(), and attach to parse
+    //TODO: investigate delete() and remove(), and attach to parse
     private void removeSignInEvent(int position) {
         SignInEvent signInEvent = mSignInEvents.get(position);
         SignInEvent eventToDelete = SignInEvent.find(signInEvent);

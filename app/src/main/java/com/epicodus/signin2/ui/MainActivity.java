@@ -51,11 +51,17 @@ public class MainActivity extends AppCompatActivity {
         mAdminPanelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, AdminActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private void setWelcomeText() {
+        BikeCollective bikeCollective = ActiveBikeCollective.getActiveBikeCollective();
+        if (bikeCollective != null) {
+            mWelcomeText.setText("Welcome, " + bikeCollective.getName());
+        }
     }
 
     @Override
@@ -83,12 +89,5 @@ public class MainActivity extends AppCompatActivity {
     private void goToPage(Class newActivity) {
         Intent intent = new Intent(this, newActivity);
         startActivity(intent);
-    }
-
-    private void setWelcomeText() {
-        BikeCollective bikeCollective = ActiveBikeCollective.getActiveBikeCollective();
-        if (bikeCollective != null) {
-            mWelcomeText.setText("Welcome, " + bikeCollective.getName());
-        }
     }
 }
