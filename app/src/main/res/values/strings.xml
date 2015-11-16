@@ -21,8 +21,6 @@
     <string name="iAgreeButton">I agree and will participate</string>
     <string name="error_choose_purpose">Please choose whether you are volunteering or fixing your steed.</string>
     <string name="error_name">Please type your name!</string>
-    <string name="dialog_oops">Oops!</string>
-    <string name="dialog_thanks">Thanks!</string>
     <string name="dialog_signedin">You\'re all signed in</string>
 
 
@@ -41,6 +39,7 @@
     <string name="agreementsLabel">Collective agreements:</string>
     <string name="coopAgreementHint">Patrons and volunteers agree to</string>
     <string name="registerButton">Register</string>
+    <string name="error_already_registered">This email is already registered.</string>
 
     <!-- Main Activity -->
     <string name="welcomeMessage">Welcome</string>
@@ -54,5 +53,11 @@
     <string name="dateTime">DateTime</string>
     <string name="signedOutAt">Signed out at:</string>
     <string name="dateTimeOut">DateTimeOut</string>
+
+    <!-- universal: dialogs -->
+    <string name="dialog_oops">Oops!</string>
+    <string name="dialog_thanks">Thanks!</string>
+    <string name="error_fill_all_fields">Please fill all required fields</string>
+    <string name="dialog_registered_coop">You successfully registered your coop.</string>
 
 </resources>

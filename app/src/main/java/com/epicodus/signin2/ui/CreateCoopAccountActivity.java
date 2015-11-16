@@ -39,32 +39,41 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                 String coopPassword = mPassword.getText().toString().trim();
                 String coopAgreement = mAgreement.getText().toString().trim();
 
-                if (isAlreadyRegistered(coopEmail)) {
+                if (coopName.isEmpty() || coopEmail.isEmpty() || coopPassword.isEmpty()) {
+                    showDialog(getString(R.string.dialog_oops), getString(R.string.error_fill_all_fields));
+                } else if (isAlreadyRegistered(coopEmail)) {
                     mPassword.setText("");
                     mEmail.setText("");
                     mEmail.requestFocus();
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(CreateCoopAccountActivity.this);
-                    dialog.setMessage("This email is already registered.")
-                            .setTitle("Oops!")
-                            .setPositiveButton(android.R.string.ok, null);
-                    dialog.create();
-                    dialog.show();
+                    showDialog(getString(R.string.dialog_oops), getString(R.string.error_already_registered));
                 } else {
                     BikeCollective newBikeCollective = new BikeCollective(coopName, coopEmail, coopPassword, coopAgreement);
                     newBikeCollective.save();
-                    clearFields();
-
                     ActiveBikeCollective.setActiveBikeCollective(newBikeCollective);
-
-                    Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    showDialog(getString(R.string.dialog_thanks), getString(R.string.dialog_registered_coop));
+                    clearFields();
+                    goToMainPage();
                 }
             }
         });
     }
 
+    private void goToMainPage() {
+        Intent intent = new Intent(CreateCoopAccountActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void showDialog(String title, String message) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(CreateCoopAccountActivity.this);
+        dialog.setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok, null);
+        dialog.create();
+        dialog.show();
+    }
+
     public static boolean isAlreadyRegistered(String coopEmail) {
-        if (BikeCollective.find(coopEmail).equals(coopEmail)) {
+        if (BikeCollective.find(coopEmail) != null) {
             return true;
         } else {
             return false;

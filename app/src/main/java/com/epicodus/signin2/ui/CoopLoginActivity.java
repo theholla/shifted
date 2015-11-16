@@ -23,11 +23,6 @@ public class CoopLoginActivity extends AppCompatActivity {
     @Bind(R.id.coopCreateAccountButton) Button mCoopCreateAccountButton;
     @Bind(R.id.mainHeaderTextView) TextView mMainHeaderTextView;
 
-    public void clearFields() {
-        mCoopEmail.setText("");
-        mCoopPassword.setText("");
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +72,10 @@ public class CoopLoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
+    public void clearFields() {
+        mCoopEmail.setText("");
+        mCoopPassword.setText("");
     }
 }
