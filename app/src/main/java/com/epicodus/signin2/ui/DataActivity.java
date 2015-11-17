@@ -1,10 +1,16 @@
 package com.epicodus.signin2.ui;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.epicodus.signin2.R;
+import com.epicodus.signin2.utiil.ActiveBikeCollective;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
@@ -16,15 +22,19 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import butterknife.Bind;
 
-public class DataActivity extends Activity {
+public class DataActivity extends AppCompatActivity {
     private PieChart mChart;
     private float[] yData = { 45, 35, 20 };
     private String[] xData = { "Volunteers", "Patrons", "Employees" } ;
+    @Bind(R.id.toolbar) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //TODO: incorporate toolbar
 
         // add pie chart to layout
         mChart = new PieChart(this);
@@ -85,7 +95,7 @@ public class DataActivity extends Activity {
             xVals.add(xData[i]);
 
         // create pie data set
-        PieDataSet dataSet = new PieDataSet(yVals1, "Market Share");
+        PieDataSet dataSet = new PieDataSet(yVals1, "Contact Type");
         dataSet.setSliceSpace(3);
         dataSet.setSelectionShift(5);
 
@@ -125,5 +135,30 @@ public class DataActivity extends Activity {
         mChart.invalidate();
     }
 
-    //TODO: configure toolbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.action_logout) {
+            ActiveBikeCollective.logout();
+            goToPage(CoopLoginActivity.class);
+        } else if (itemId == R.id.action_sign_in) {
+            goToPage(ContactSignInActivity.class);
+        } else if (itemId == R.id.action_admin) {
+            goToPage(AdminActivity.class);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void goToPage(Class newActivity) {
+        Intent intent = new Intent(this, newActivity);
+        startActivity(intent);
+    }
 }

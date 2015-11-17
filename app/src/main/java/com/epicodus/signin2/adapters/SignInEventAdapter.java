@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.SignInEvent;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class SignInEventAdapter extends BaseAdapter {
@@ -19,6 +21,10 @@ public class SignInEventAdapter extends BaseAdapter {
     public SignInEventAdapter(Context context, ArrayList<SignInEvent> signInEvents) {
         mContext = context;
         mSignInEvents = signInEvents;
+    }
+
+    private static class ViewHolder {
+        TextView eventName, eventType, eventDateLabel, eventDate, eventSignedInAtLabel, eventSignInTime, eventSignedOutAtLabel, eventSignOutTime;
     }
 
     @Override
@@ -45,6 +51,8 @@ public class SignInEventAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.eventName = (TextView) convertView.findViewById(R.id.eventName);
             holder.eventType = (TextView) convertView.findViewById(R.id.eventType);
+            holder.eventDateLabel = (TextView) convertView.findViewById(R.id.eventDateLabel);
+            holder.eventDate = (TextView) convertView.findViewById(R.id.eventDate);
             holder.eventSignedInAtLabel = (TextView) convertView.findViewById(R.id.eventSignedInAtLabel);
             holder.eventSignInTime = (TextView) convertView.findViewById(R.id.eventSignInTime);
             holder.eventSignedOutAtLabel = (TextView) convertView.findViewById(R.id.eventSignedOutAtLabel);
@@ -59,13 +67,11 @@ public class SignInEventAdapter extends BaseAdapter {
 
         holder.eventName.setText(signInEvent.getName());
         holder.eventType.setText(signInEvent.getContactType());
-        holder.eventSignInTime.setText("test");
-        holder.eventSignOutTime.setText("");
+        holder.eventDate.setText(signInEvent.getFormattedSignInDate());
+        holder.eventSignInTime.setText(String.valueOf(signInEvent.getFormattedSignInTime()));
+        holder.eventSignOutTime.setText(String.valueOf(signInEvent.getFormattedSignOutTime()));
 
         return convertView;
     }
 
-    private static class ViewHolder {
-        TextView eventName, eventType, eventSignedInAtLabel, eventSignInTime, eventSignedOutAtLabel, eventSignOutTime;
-    }
 }

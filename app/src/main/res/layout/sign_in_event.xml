@@ -5,7 +5,9 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -71,6 +73,29 @@
                 android:id="@+id/eventSignOutTime"
                 android:layout_weight="1"
                 android:gravity="start" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date:"
+                android:id="@+id/eventDateLabel"
+                android:gravity="start"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:id="@+id/eventDate"
+                android:layout_weight="1"
+                android:gravity="start"/>
 
         </LinearLayout>
 

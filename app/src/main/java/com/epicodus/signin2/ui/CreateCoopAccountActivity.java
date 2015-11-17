@@ -15,6 +15,7 @@ import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -37,14 +38,18 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "dOCMN4er20zZtpSZfGHuy3mJ5tb3Dmz1eIIUl41i", "wOAFcA233sW0LH8ilIsWQJ0JsIgGasTQMjjBJpgB");
+        Parse.initialize(this, getString(R.string.parseKey), getString(R.string.parseValue));
+
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
 
         mRegisterCoopAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String coopName = mName.getText().toString().trim();
+                final String coopName = mName.getText().toString().trim();
                 String coopEmail = mEmail.getText().toString().trim();
-                String coopPassword = mPassword.getText().toString().trim();
+                final String coopPassword = mPassword.getText().toString().trim();
                 String coopAgreement = mAgreement.getText().toString().trim();
 
                 if (coopName.isEmpty() || coopEmail.isEmpty() || coopPassword.isEmpty()) {
@@ -60,6 +65,8 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
 
                     ActiveBikeCollective.setActiveBikeCollective(newBikeCollective);
 
+                    ParseUser.getCurrentUser().logOut();
+
                     ParseUser newCoop = new ParseUser();
                     newCoop.setUsername(coopName);
                     newCoop.setPassword(coopPassword);
@@ -70,6 +77,7 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                         public void done(ParseException e) {
                             setProgressBarIndeterminateVisibility(false);
                             if (e == null) {
+                                ParseUser.logInInBackground(coopName, coopPassword); // this should be accomplished by signUpInBG
                                 showDialogAndNewIntent(getString(R.string.dialog_thanks), getString(R.string.dialog_registered_coop));
                                 clearFields();
                             } else {

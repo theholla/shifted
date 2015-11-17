@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +18,7 @@ import com.epicodus.signin2.R;
 import com.epicodus.signin2.adapters.SignInEventAdapter;
 import com.epicodus.signin2.models.SignInEvent;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
@@ -38,9 +40,6 @@ public class AdminActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         ButterKnife.bind(this);
-
-//        setSupportActionBar(mToolbar);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mSignInEvents = (ArrayList) SignInEvent.all();
         mListView = getListView();
@@ -73,10 +72,9 @@ public class AdminActivity extends ListActivity {
                 return false;
             }
         });
-
     }
 
-    //TODO: investigage delete() and remove(), and attach to parse
+    //TODO: investigate delete() and remove(), and attach to parse
     private void removeSignInEvent(int position) {
         SignInEvent signInEvent = mSignInEvents.get(position);
         SignInEvent eventToDelete = SignInEvent.find(signInEvent);
@@ -97,6 +95,7 @@ public class AdminActivity extends ListActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.action_logout) {
             ActiveBikeCollective.logout();
+            ParseUser.getCurrentUser().logOut();
 
             Intent intent = new Intent(this, CoopLoginActivity.class);
             startActivity(intent);
