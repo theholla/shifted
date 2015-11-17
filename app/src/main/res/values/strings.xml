@@ -63,6 +63,11 @@
     <string name="error_fill_all_fields">Please fill all required fields</string>
     <string name="dialog_registered_coop">You successfully registered your coop.</string>
     <string name="title_activity_data">Data</string>
+    <string name="error_there_was_an_exception">"There was an error: "</string>
+
+    <!-- Parse -->
+    <string name="parseKey">yC8wNP8Eg1bcqyLWPDjzA2ARgJupvx2IGf6DwUUf</string>
+    <string name="parseValue">QnQDJIngGbgE9uvseC5HNljZp9nfpBfTCdcePW8i</string>
 
 
 </resources>

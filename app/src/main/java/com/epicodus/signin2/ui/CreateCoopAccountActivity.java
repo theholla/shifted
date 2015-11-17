@@ -13,6 +13,11 @@ import android.widget.TextView;
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,12 +37,19 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_coop_account);
         ButterKnife.bind(this);
 
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, getString(R.string.parseKey), getString(R.string.parseValue));
+
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
+
         mRegisterCoopAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String coopName = mName.getText().toString().trim();
+                final String coopName = mName.getText().toString().trim();
                 String coopEmail = mEmail.getText().toString().trim();
-                String coopPassword = mPassword.getText().toString().trim();
+                final String coopPassword = mPassword.getText().toString().trim();
                 String coopAgreement = mAgreement.getText().toString().trim();
 
                 if (coopName.isEmpty() || coopEmail.isEmpty() || coopPassword.isEmpty()) {
@@ -50,10 +62,29 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                 } else {
                     BikeCollective newBikeCollective = new BikeCollective(coopName, coopEmail, coopPassword, coopAgreement);
                     newBikeCollective.save();
+
                     ActiveBikeCollective.setActiveBikeCollective(newBikeCollective);
-                    showDialogAndNewIntent(getString(R.string.dialog_thanks), getString(R.string.dialog_registered_coop));
-                    clearFields();
-                    goToMainPage();
+
+                    ParseUser.getCurrentUser().logOut();
+
+                    ParseUser newCoop = new ParseUser();
+                    newCoop.setUsername(coopName);
+                    newCoop.setPassword(coopPassword);
+                    newCoop.setEmail(coopEmail);
+                    newCoop.put("agreement", coopAgreement);
+
+                    newCoop.signUpInBackground(new SignUpCallback() {
+                        public void done(ParseException e) {
+                            setProgressBarIndeterminateVisibility(false);
+                            if (e == null) {
+                                ParseUser.logInInBackground(coopName, coopPassword); // this should be accomplished by signUpInBG
+                                showDialogAndNewIntent(getString(R.string.dialog_thanks), getString(R.string.dialog_registered_coop));
+                                clearFields();
+                            } else {
+                                showDialog(getString(R.string.dialog_oops), getString(R.string.error_there_was_an_exception) + e.getLocalizedMessage());
+                            }
+                        }
+                    });
                 }
             }
         });

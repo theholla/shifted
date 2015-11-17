@@ -18,6 +18,7 @@ import com.epicodus.signin2.R;
 import com.epicodus.signin2.adapters.SignInEventAdapter;
 import com.epicodus.signin2.models.SignInEvent;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
@@ -94,6 +95,7 @@ public class AdminActivity extends ListActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.action_logout) {
             ActiveBikeCollective.logout();
+            ParseUser.getCurrentUser().logOut();
 
             Intent intent = new Intent(this, CoopLoginActivity.class);
             startActivity(intent);

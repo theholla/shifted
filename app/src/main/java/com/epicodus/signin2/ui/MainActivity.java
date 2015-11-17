@@ -14,6 +14,8 @@ import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
 import com.facebook.stetho.Stetho;
+import com.parse.Parse;
+import com.parse.ParseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -76,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (itemId == R.id.action_logout) {
             ActiveBikeCollective.logout();
+
+            ParseUser.getCurrentUser().logOut();
+
             goToPage(CoopLoginActivity.class);
         } else if (itemId == R.id.action_sign_in) {
             goToPage(ContactSignInActivity.class);
