@@ -73,7 +73,7 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                                 showDialogAndNewIntent(getString(R.string.dialog_thanks), getString(R.string.dialog_registered_coop));
                                 clearFields();
                             } else {
-                                showDialog(getString(R.string.dialog_oops), "Something went wrong!");
+                                showDialog(getString(R.string.dialog_oops), getString(R.string.error_there_was_an_exception) + e.getLocalizedMessage());
                             }
                         }
                     });
