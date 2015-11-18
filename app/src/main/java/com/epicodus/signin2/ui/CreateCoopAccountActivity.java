@@ -40,10 +40,6 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, getString(R.string.parseKey), getString(R.string.parseValue));
 
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
-
         mRegisterCoopAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +73,6 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                         public void done(ParseException e) {
                             setProgressBarIndeterminateVisibility(false);
                             if (e == null) {
-                                ParseUser.logInInBackground(coopName, coopPassword); // this should be accomplished by signUpInBG
                                 showDialogAndNewIntent(getString(R.string.dialog_thanks), getString(R.string.dialog_registered_coop));
                                 clearFields();
                             } else {
@@ -107,6 +102,8 @@ public class CreateCoopAccountActivity extends AppCompatActivity {
                         goToMainPage();
                     }
                 });
+        dialog.create();
+        dialog.show();
     }
 
     private void showDialog(String title, String message) {
