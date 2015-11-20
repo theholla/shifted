@@ -12,10 +12,7 @@ import android.widget.TextView;
 
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
-import com.epicodus.signin2.utiil.ActiveBikeCollective;
-import com.parse.Parse;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 

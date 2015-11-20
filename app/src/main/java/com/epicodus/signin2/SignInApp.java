@@ -10,7 +10,6 @@ public class SignInApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        // TODO: integrate into application by changing app name in Manifest. Currently unused.
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, getString(R.string.parseKey), getString(R.string.parseValue));
     }

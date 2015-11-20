@@ -12,8 +12,7 @@ import android.widget.TextView;
 import com.epicodus.signin2.R;
 import com.epicodus.signin2.models.BikeCollective;
 import com.epicodus.signin2.utiil.ActiveBikeCollective;
-
-import java.text.ParseException;
+import com.parse.ParseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,49 +30,59 @@ public class CoopLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_coop_login);
         ButterKnife.bind(this);
 
-        mCoopSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String coopEmail = mCoopEmail.getText().toString().trim();
-                String coopPassword = mCoopPassword.getText().toString().trim();
+        if (ParseUser.getCurrentUser() == null) {
+            mCoopSignInButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String coopEmail = mCoopEmail.getText().toString().trim();
+                    String coopPassword = mCoopPassword.getText().toString().trim();
 
-                BikeCollective bikeCollective = BikeCollective.find(coopEmail);
+                    BikeCollective bikeCollective = BikeCollective.find(coopEmail);
 
-                if (bikeCollective != null) {
-                    if (bikeCollective.getPassword().equals(coopPassword)) {
-                        ActiveBikeCollective.setActiveBikeCollective(bikeCollective);
-                        clearFields();
+                    if (bikeCollective != null) {
+                        if (bikeCollective.getPassword().equals(coopPassword)) {
+                            ActiveBikeCollective.setActiveBikeCollective(bikeCollective);
+                            clearFields();
 
-                        Intent intent = new Intent(CoopLoginActivity.this, MainActivity.class);
-                        startActivity(intent);
+                            Intent intent = new Intent(CoopLoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(CoopLoginActivity.this);
+                            dialog.setMessage("Your email and password don't match.")
+                                    .setTitle("Oops!")
+                                    .setPositiveButton(android.R.string.ok, null);
+                            dialog.create();
+                            dialog.show();
+                            clearFields();
+                        }
                     } else {
                         AlertDialog.Builder dialog = new AlertDialog.Builder(CoopLoginActivity.this);
-                        dialog.setMessage("Your email and password don't match.")
-                            .setTitle("Oops!")
-                            .setPositiveButton(android.R.string.ok, null);
+                        dialog.setMessage("You don't appear to be registered.")
+                                .setTitle("Oops!")
+                                .setPositiveButton(android.R.string.ok, null);
                         dialog.create();
                         dialog.show();
                         clearFields();
                     }
-                } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(CoopLoginActivity.this);
-                    dialog.setMessage("You don't appear to be registered.")
-                            .setTitle("Oops!")
-                            .setPositiveButton(android.R.string.ok, null);
-                    dialog.create();
-                    dialog.show();
-                    clearFields();
                 }
-            }
-        });
+            });
 
-        mCoopCreateAccountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CoopLoginActivity.this, CreateCoopAccountActivity.class);
-                startActivity(intent);
-            }
-        });
+            mCoopCreateAccountButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(CoopLoginActivity.this, CreateCoopAccountActivity.class);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            goToMainPage();
+        }
+    }
+
+    private void goToMainPage() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     public void clearFields() {
