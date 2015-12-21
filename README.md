@@ -1,20 +1,21 @@
-# Bicycle Collective Sign In App
+# Shifted
+## A Sign In App for Bicycle Collectives
 
 #### By Diana Holland
 Date of current version: 11/02/2015
 
 ## Description
 
-In progress. This app is designed wiht bicycle collectives in mind. Collectives can sign in and keep track of patron/volunteer hours.
+In progress. This app is designed with bicycle collectives in mind. Collectives can sign in and keep track of patron/volunteer hours.
 
 ## Setup
 
-* Clone this git repository on your computer ```git clone  https://github.com/theholla/sign-in.git```
+* Clone this git repository on your computer ```git clone  https://github.com/theholla/shifted```
 * Launch Android Studio and import this project.
 
 ## Technologies Used
 
-JavaScript, HTML5, and CSS3, Android Studio
+Java, Parse, Android Studio
 
 ### Legal
 
